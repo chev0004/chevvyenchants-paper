@@ -1,0 +1,2 @@
+# Copy to local.properties and adjust. Gitignored by default.
+# chevvyenchants.netlifyDeployDir=/path/to/netlify/deploy/dir
