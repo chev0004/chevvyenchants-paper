@@ -23,10 +23,10 @@ The build task also runs this step, so ./gradlew build produces the zip too.
 Netlify auto-upload (optional)
 ------------------------------
 
-If chevvyenchants.autoDeployLangPack=true, ./gradlew build finishes with
-deployChevvyenchantsLangPack: it uploads chevvyenchants-lang.zip only when its
-SHA-1 changed since the last successful deploy (tracked in
-.chevvyenchants-lang-last-deploy.sha1 at the repo root, gitignored).
+If chevvyenchants.autoDeployLangPack=true, running ./gradlew chevvyenchantsResourcePack
+or ./gradlew build runs deployChevvyenchantsLangPack right after the zip task: it
+uploads chevvyenchants-lang.zip only when its SHA-1 changed since the last successful
+deploy (tracked in .chevvyenchants-lang-last-deploy.sha1 at the repo root, gitignored).
 
 Requires: fish, netlify CLI, scripts/mc-deploy-textures.fish, and a deploy
 directory from chevvyenchants.netlifyDeployDir (gradle.properties), or
@@ -54,14 +54,41 @@ Upload chevvyenchants-lang.zip somewhere that returns a direct HTTPS URL
 (raw file, not an HTML page). Examples: your own site, GitHub releases,
 Modrinth as a generic file, object storage with a public link.
 
-Every time you change lang strings or pack contents, rebuild the zip and
-update resource-pack-sha1.
+The URL usually stays the same (same file name on Netlify or your CDN).
+What must change when lang JSON or pack contents change is only the
+resource-pack-sha1 line: the client uses it to know the zip bytes changed.
+
+Gradle writes both the hash and a ready-to-merge snippet:
+
+  build/distributions/chevvyenchants-lang.zip.sha1
+  build/distributions/lang-pack-server-snippet.properties
+
+Set chevvyenchants.resourcePackUrl in gradle.properties to your HTTPS zip URL.
+Then lang-pack-server-snippet.properties includes resource-pack= and
+resource-pack-sha1= for paste into server.properties.
+
+After a successful Netlify deploy, Gradle can verify the live file matches the
+local build (same check as curl URL | sha1sum vs .sha1): it runs automatically
+when deployChevvyenchantsLangPack finishes if resourcePackUrl is set. Run
+./gradlew verifyLangPackPublished anytime to check the URL without deploying.
+
+Paper still needs resource-pack-sha1 updated on the server when the zip changes;
+nothing can push that into server.properties for you unless you add SSH or a
+host API. Use scripts/apply-lang-pack-sha-to-server-properties.fish on the host.
+
+To patch a local server.properties in one step (after building the zip):
+
+  ./scripts/apply-lang-pack-sha-to-server-properties.fish /path/to/server.properties
+
+Paper allows resource-pack-sha1 empty (integrity check skipped). Clients may
+still cache by URL; if players keep seeing old strings, set the SHA from the
+build output instead of leaving it blank.
 
 server.properties
 -----------------
 
   resource-pack=https://example.com/path/chevvyenchants-lang.zip
-  resource-pack-sha1=<paste SHA-1 from the .sha1 file or Gradle log>
+  resource-pack-sha1=<paste from lang-pack-server-snippet.properties or .sha1 file>
   require-resource-pack=true
 
 Optional:
