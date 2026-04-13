@@ -2,6 +2,10 @@
 
 .gradle/
 build/
+
+.chevvyenchants-lang-last-deploy.sha1
+local.properties
+.netlify/
 out/
 classes/
 
