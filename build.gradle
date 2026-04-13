@@ -51,3 +51,123 @@ jar {
 		rename { "${it}_${project.base.archivesName.get()}" }
 	}
 }
+
+def chevvyenchantsResourcePackStage = layout.buildDirectory.dir('chevvyenchants-lang-pack')
+
+def prepareChevvyenchantsResourcePack = tasks.register('prepareChevvyenchantsResourcePack', Sync) {
+	group = 'distribution'
+	description = 'Stage server resource pack (pack.mcmeta + assets; lang from src/main/resources)'
+	into(chevvyenchantsResourcePackStage)
+	from('server-resourcepack/chevvyenchants-lang') {
+		exclude 'assets/chevvyenchants/lang/**'
+	}
+	from('src/main/resources/assets/chevvyenchants/lang') {
+		into('assets/chevvyenchants/lang')
+	}
+}
+
+tasks.register('chevvyenchantsResourcePack', Zip) {
+	group = 'distribution'
+	description = 'Build chevvyenchants-lang.zip for server.properties resource-pack'
+	dependsOn(prepareChevvyenchantsResourcePack)
+	from(chevvyenchantsResourcePackStage)
+	archiveFileName = 'chevvyenchants-lang.zip'
+	destinationDirectory = layout.buildDirectory.dir('distributions')
+	doLast {
+		def out = archiveFile.get().asFile
+		def sha = java.security.MessageDigest.getInstance('SHA-1')
+			.digest(out.bytes)
+			.collect { String.format('%02x', it) }
+			.join()
+		def shaFile = new File(destinationDirectory.get().asFile, "${archiveFileName.get()}.sha1")
+		shaFile.text = sha
+		logger.lifecycle('Resource pack: {} ({} bytes)', out.canonicalPath, out.length())
+		logger.lifecycle('SHA-1 for server.properties resource-pack-sha1: {}', sha)
+	}
+}
+
+tasks.named('build').configure {
+	dependsOn(tasks.named('chevvyenchantsResourcePack'))
+}
+
+import java.util.Properties
+
+def chevvyenchantsDeployScript = file(
+	project.findProperty('chevvyenchants.deployScript') ?: 'scripts/mc-deploy-textures.fish'
+)
+
+def chevvyenchantsLangDeployMarker = rootProject.file('.chevvyenchants-lang-last-deploy.sha1')
+
+String resolveChevvyNetlifyDeployDir(Project p) {
+	def prop = p.findProperty('chevvyenchants.netlifyDeployDir')
+	if (prop != null) {
+		def s = prop.toString().trim()
+		if (!s.isEmpty()) {
+			return s
+		}
+	}
+	def env = System.getenv('CHEVVY_NETLIFY_DEPLOY_DIR')
+	if (env != null && !env.trim().isEmpty()) {
+		return env.trim()
+	}
+	def local = p.rootProject.file('local.properties')
+	if (local.isFile()) {
+		def props = new Properties()
+		local.withInputStream { props.load(it) }
+		def v = props.getProperty('chevvyenchants.netlifyDeployDir')
+		if (v != null && !v.trim().isEmpty()) {
+			return v.trim()
+		}
+	}
+	return null
+}
+
+tasks.register('deployChevvyenchantsLangPack', Exec) {
+	group = 'distribution'
+	description = 'If chevvyenchants-lang.zip SHA-1 changed, upload via scripts/mc-deploy-textures.fish and Netlify'
+	dependsOn(tasks.named('chevvyenchantsResourcePack'))
+	workingDir = rootDir
+
+	onlyIf {
+		if (!chevvyenchantsDeployScript.isFile()) {
+			logger.lifecycle('deployChevvyenchantsLangPack: missing {}, skip', chevvyenchantsDeployScript)
+			return false
+		}
+		def deployDir = resolveChevvyNetlifyDeployDir(project)
+		if (deployDir == null) {
+			logger.lifecycle('deployChevvyenchantsLangPack: set chevvyenchants.netlifyDeployDir, CHEVVY_NETLIFY_DEPLOY_DIR, or local.properties, skip')
+			return false
+		}
+		def shaFile = layout.buildDirectory.file('distributions/chevvyenchants-lang.zip.sha1').get().asFile
+		if (!shaFile.isFile()) {
+			return false
+		}
+		def currentSha = shaFile.text.trim()
+		if (chevvyenchantsLangDeployMarker.isFile() && chevvyenchantsLangDeployMarker.text.trim() == currentSha) {
+			logger.lifecycle('Lang pack unchanged (SHA-1 {}), skipping Netlify deploy.', currentSha)
+			return false
+		}
+		return true
+	}
+
+	doFirst {
+		commandLine 'fish', chevvyenchantsDeployScript.absolutePath, resolveChevvyNetlifyDeployDir(project)
+		logger.lifecycle('Lang pack SHA-1 changed; running Netlify deploy')
+	}
+
+	doLast {
+		def shaFile = layout.buildDirectory.file('distributions/chevvyenchants-lang.zip.sha1').get().asFile
+		def sha = shaFile.text.trim()
+		chevvyenchantsLangDeployMarker.parentFile.mkdirs()
+		chevvyenchantsLangDeployMarker.text = sha
+		logger.lifecycle('Netlify lang pack deploy complete. Recorded SHA-1: {}', sha)
+		logger.lifecycle('If Paper uses this URL, set server.properties resource-pack-sha1 to: {}', sha)
+	}
+}
+
+def chevvyenchantsAutoDeployLangPack = (project.findProperty('chevvyenchants.autoDeployLangPack') ?: 'false').toBoolean()
+if (chevvyenchantsAutoDeployLangPack) {
+	tasks.named('build').configure {
+		finalizedBy(tasks.named('deployChevvyenchantsLangPack'))
+	}
+}
