@@ -16,6 +16,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Excavation.register(this);
 		Gravedigger.register(this);
 		EmberHeart.register(this);
+		Deforestation.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

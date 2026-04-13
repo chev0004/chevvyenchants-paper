@@ -54,6 +54,10 @@ final class ChevvyVillagerTrades {
 			if (gr != null && !hasEnchantedBookTrade(villager, gr)) {
 				addBookTrade(villager, gr, 18, ThreadLocalRandom.current().nextInt(-2, 3));
 			}
+			Enchantment df = Enchantment.getByKey(ChevvyEnchantKeys.DEFORESTATION);
+			if (df != null && !hasEnchantedBookTrade(villager, df)) {
+				addBookTrade(villager, df, 22, ThreadLocalRandom.current().nextInt(-2, 3));
+			}
 		}
 		if (villager.getProfession() == Villager.Profession.ARMORER && villager.getVillagerLevel() >= 4) {
 			Enchantment em = Enchantment.getByKey(ChevvyEnchantKeys.EMBER_HEART);
@@ -85,6 +89,8 @@ final class ChevvyVillagerTrades {
 			Gravedigger.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.EMBER_HEART)) {
 			EmberHeart.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.DEFORESTATION)) {
+			Deforestation.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);
