@@ -1,20 +1,51 @@
-Server resource pack (forced download for Java clients)
-=======================================================
+Server resource pack (Java clients see enchant names and messages)
+===================================================================
 
-This folder is NOT a mod. It is a normal Minecraft resource pack so players
-get ChevvyEnchants translation keys without installing your mod JAR.
+Players need this pack (or equivalent files) so the client can resolve
+enchantment.chevvyenchants.* and chevvyenchants.command.* translation keys.
+The plugin JAR alone does not send language files to clients.
 
-Pack format 75 matches Minecraft Java 1.21.11 (see root pack.mcmeta).
+Build the zip (recommended)
+---------------------------
 
-Build the zip
--------------
+From the project root (Gradle stages pack.mcmeta from server-resourcepack/
+and copies lang JSON from src/main/resources/assets/chevvyenchants/lang/):
 
-From this directory:
+  ./gradlew chevvyenchantsResourcePack
 
-  cd chevvyenchants-lang
-  zip -r ../chevvyenchants-lang.zip .
+Output:
 
-The zip must contain pack.mcmeta at the top level (not inside another folder).
+  build/distributions/chevvyenchants-lang.zip
+  build/distributions/chevvyenchants-lang.zip.sha1   (40-char hex, no newline issues)
+
+The build task also runs this step, so ./gradlew build produces the zip too.
+
+Netlify auto-upload (optional)
+------------------------------
+
+If chevvyenchants.autoDeployLangPack=true, ./gradlew build finishes with
+deployChevvyenchantsLangPack: it uploads chevvyenchants-lang.zip only when its
+SHA-1 changed since the last successful deploy (tracked in
+.chevvyenchants-lang-last-deploy.sha1 at the repo root, gitignored).
+
+Requires: fish, netlify CLI, scripts/mc-deploy-textures.fish, and a deploy
+directory from chevvyenchants.netlifyDeployDir (gradle.properties), or
+CHEVVY_NETLIFY_DEPLOY_DIR, or local.properties.
+
+Optional when running the script alone: CHEVVY_NETLIFY_PUBLIC_URL prints the
+download URL after deploy.
+
+Disable Netlify step: chevvyenchants.autoDeployLangPack=false
+
+Override script: chevvyenchants.deployScript=...
+
+Manual zip (optional)
+---------------------
+
+  cd server-resourcepack/chevvyenchants-lang
+  zip -r ../../../build/chevvyenchants-lang-manual.zip .
+
+The zip must have pack.mcmeta at the top level (not inside another folder).
 
 Host the zip
 ------------
@@ -23,20 +54,14 @@ Upload chevvyenchants-lang.zip somewhere that returns a direct HTTPS URL
 (raw file, not an HTML page). Examples: your own site, GitHub releases,
 Modrinth as a generic file, object storage with a public link.
 
-Every time you change the zip contents, you must update resource-pack-sha1.
-
-SHA-1 (required)
-----------------
-
-  sha1sum chevvyenchants-lang.zip
-
-Copy the 40-character hex string (no spaces).
+Every time you change lang strings or pack contents, rebuild the zip and
+update resource-pack-sha1.
 
 server.properties
 -----------------
 
   resource-pack=https://example.com/path/chevvyenchants-lang.zip
-  resource-pack-sha1=<paste sha1 here>
+  resource-pack-sha1=<paste SHA-1 from the .sha1 file or Gradle log>
   require-resource-pack=true
 
 Optional:
@@ -44,14 +69,16 @@ Optional:
   resource-pack-prompt={"text":"This server needs its translation pack."}
 
 With require-resource-pack=true, players who refuse the prompt are disconnected.
-Without it, they can join but may see raw translation keys again.
+Without it, they can join but may see raw translation keys on items.
+
+Local testing without hosting
+-----------------------------
+
+Put chevvyenchants-lang.zip in the client resource pack folder, enable it
+in the resource packs screen, then connect to the server.
 
 Bedrock (Geyser)
 ----------------
 
 Java server resource packs are not applied to Bedrock clients the same way.
 Custom enchant names on Bedrock may still look wrong; gameplay stays server-side.
-
-When you add new lang keys in the mod, copy them into
-chevvyenchants-lang/assets/chevvyenchants/lang/, rebundle the zip, rehost,
-and update resource-pack-sha1.
