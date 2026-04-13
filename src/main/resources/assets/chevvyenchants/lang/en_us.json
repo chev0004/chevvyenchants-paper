@@ -1,0 +1,17 @@
+{
+  "enchantment.chevvyenchants.excavation": "Excavation",
+  "enchantment.chevvyenchants.gravedigger": "Gravedigger",
+  "enchantment.chevvyenchants.ember_heart": "Ember Heart",
+  "chevvyenchants.command.excavation.added": "Applied Excavation to the held pickaxe.",
+  "chevvyenchants.command.excavation.cleared": "Removed Excavation from the held item.",
+  "chevvyenchants.command.excavation.need_pickaxe": "Hold a pickaxe in your main hand.",
+  "chevvyenchants.command.excavation.players_only": "This command can only be used by a player.",
+  "chevvyenchants.command.gravedigger.added": "Applied Gravedigger to the held shovel.",
+  "chevvyenchants.command.gravedigger.cleared": "Removed Gravedigger from the held item.",
+  "chevvyenchants.command.gravedigger.need_shovel": "Hold a shovel in your main hand.",
+  "chevvyenchants.command.gravedigger.players_only": "This command can only be used by a player.",
+  "chevvyenchants.command.ember_heart.added": "Applied Ember Heart to the held chestplate.",
+  "chevvyenchants.command.ember_heart.cleared": "Removed Ember Heart from the held item.",
+  "chevvyenchants.command.ember_heart.need_chestplate": "Hold a chestplate in your main hand.",
+  "chevvyenchants.command.ember_heart.players_only": "This command can only be used by a player."
+}

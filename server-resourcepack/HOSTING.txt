@@ -1,0 +1,57 @@
+Server resource pack (forced download for Java clients)
+=======================================================
+
+This folder is NOT a mod. It is a normal Minecraft resource pack so players
+get ChevvyEnchants translation keys without installing your mod JAR.
+
+Pack format 75 matches Minecraft Java 1.21.11 (see root pack.mcmeta).
+
+Build the zip
+-------------
+
+From this directory:
+
+  cd chevvyenchants-lang
+  zip -r ../chevvyenchants-lang.zip .
+
+The zip must contain pack.mcmeta at the top level (not inside another folder).
+
+Host the zip
+------------
+
+Upload chevvyenchants-lang.zip somewhere that returns a direct HTTPS URL
+(raw file, not an HTML page). Examples: your own site, GitHub releases,
+Modrinth as a generic file, object storage with a public link.
+
+Every time you change the zip contents, you must update resource-pack-sha1.
+
+SHA-1 (required)
+----------------
+
+  sha1sum chevvyenchants-lang.zip
+
+Copy the 40-character hex string (no spaces).
+
+server.properties
+-----------------
+
+  resource-pack=https://example.com/path/chevvyenchants-lang.zip
+  resource-pack-sha1=<paste sha1 here>
+  require-resource-pack=true
+
+Optional:
+
+  resource-pack-prompt={"text":"This server needs its translation pack."}
+
+With require-resource-pack=true, players who refuse the prompt are disconnected.
+Without it, they can join but may see raw translation keys again.
+
+Bedrock (Geyser)
+----------------
+
+Java server resource packs are not applied to Bedrock clients the same way.
+Custom enchant names on Bedrock may still look wrong; gameplay stays server-side.
+
+When you add new lang keys in the mod, copy them into
+chevvyenchants-lang/assets/chevvyenchants/lang/, rebundle the zip, rehost,
+and update resource-pack-sha1.

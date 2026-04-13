@@ -1,0 +1,17 @@
+{
+  "enchantment.chevvyenchants.excavation": "大発掘",
+  "enchantment.chevvyenchants.gravedigger": "大整地",
+  "enchantment.chevvyenchants.ember_heart": "炎心",
+  "chevvyenchants.command.excavation.added": "手持ちのツルハシに【大発掘】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.excavation.cleared": "手持ちのアイテムから【大発掘】の力を解き放った。",
+  "chevvyenchants.command.excavation.need_pickaxe": "メインハンドにツルハシを構えよ。",
+  "chevvyenchants.command.excavation.players_only": "このコマンドはプレイヤーのみが使用できる。",
+  "chevvyenchants.command.gravedigger.added": "手持ちのシャベルに【大整地】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.gravedigger.cleared": "手持ちのアイテムから【大整地】の力を解き放った。",
+  "chevvyenchants.command.gravedigger.need_shovel": "メインハンドにシャベルを構えよ。",
+  "chevvyenchants.command.gravedigger.players_only": "このコマンドはプレイヤーのみが使用できる。",
+  "chevvyenchants.command.ember_heart.added": "手持ちのチェストプレートに【炎心】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.ember_heart.cleared": "手持ちのアイテムから【炎心】の力を解き放った。",
+  "chevvyenchants.command.ember_heart.need_chestplate": "メインハンドにチェストプレートを構えよ。",
+  "chevvyenchants.command.ember_heart.players_only": "このコマンドはプレイヤーのみが使用できる。"
+}

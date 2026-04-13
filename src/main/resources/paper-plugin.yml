@@ -1,0 +1,12 @@
+name: ChevvyEnchants
+version: '${version}'
+main: com.chevvy.ChevvyEnchants
+api-version: '1.21'
+description: Custom enchantments and related server behavior
+author: chev
+bootstrapper: com.chevvy.ChevvyEnchantsBootstrap
+
+permissions:
+  chevvyenchants.commands:
+    description: Use /chevvyenchants admin commands
+    default: op
