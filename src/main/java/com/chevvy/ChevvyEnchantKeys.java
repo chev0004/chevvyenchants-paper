@@ -10,6 +10,7 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey WITHER_TOUCH = new NamespacedKey(ChevvyEnchants.MOD_ID, "wither_touch");
 	public static final NamespacedKey POISON_EDGE = new NamespacedKey(ChevvyEnchants.MOD_ID, "poison_edge");
 	public static final NamespacedKey LAVA_STRIDE = new NamespacedKey(ChevvyEnchants.MOD_ID, "lava_stride");
+	public static final NamespacedKey SUSTENANCE = new NamespacedKey(ChevvyEnchants.MOD_ID, "sustenance");
 
 	private ChevvyEnchantKeys() {}
 }

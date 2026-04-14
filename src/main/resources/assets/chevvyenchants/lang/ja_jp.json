@@ -6,10 +6,12 @@
   "enchantment.chevvyenchants.wither_touch": "枯刃",
   "enchantment.chevvyenchants.poison_edge": "毒刃",
   "enchantment.chevvyenchants.lava_stride": "溶岩歩行",
+  "enchantment.chevvyenchants.sustenance": "滋養",
   "chevvyenchants.deforestation": "大伐採",
   "chevvyenchants.wither_touch": "枯刃",
   "chevvyenchants.poison_edge": "毒刃",
   "chevvyenchants.lava_stride": "溶岩歩行",
+  "chevvyenchants.sustenance": "滋養",
   "chevvyenchants.command.deforestation.added": "手持ちの斧に【大伐採】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.deforestation.cleared": "手持ちのアイテムから【大伐採】の力を解き放った。",
   "chevvyenchants.command.deforestation.need_axe": "メインハンドに斧を構えよ。",
@@ -33,5 +35,8 @@
   "chevvyenchants.command.poison_edge.need_sword": "メインハンドに剣を構えよ。",
   "chevvyenchants.command.lava_stride.added": "手持ちのブーツに【溶岩歩行】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.lava_stride.cleared": "手持ちのアイテムから【溶岩歩行】の力を解き放った。",
-  "chevvyenchants.command.lava_stride.need_boots": "メインハンドにブーツを構えよ。"
+  "chevvyenchants.command.lava_stride.need_boots": "メインハンドにブーツを構えよ。",
+  "chevvyenchants.command.sustenance.added": "手持ちの防具に【滋養】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.sustenance.cleared": "手持ちのアイテムから【滋養】の力を解き放った。",
+  "chevvyenchants.command.sustenance.need_armor": "メインハンドに防具を構えよ。"
 }

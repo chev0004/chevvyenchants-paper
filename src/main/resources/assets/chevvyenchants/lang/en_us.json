@@ -6,10 +6,12 @@
   "enchantment.chevvyenchants.wither_touch": "Wither Touch",
   "enchantment.chevvyenchants.poison_edge": "Poison Edge",
   "enchantment.chevvyenchants.lava_stride": "Lava Stride",
+  "enchantment.chevvyenchants.sustenance": "Sustenance",
   "chevvyenchants.deforestation": "Deforestation",
   "chevvyenchants.wither_touch": "Wither Touch",
   "chevvyenchants.poison_edge": "Poison Edge",
   "chevvyenchants.lava_stride": "Lava Stride",
+  "chevvyenchants.sustenance": "Sustenance",
   "chevvyenchants.command.deforestation.added": "Applied Deforestation to the held axe.",
   "chevvyenchants.command.deforestation.cleared": "Removed Deforestation from the held item.",
   "chevvyenchants.command.deforestation.need_axe": "Hold an axe in your main hand.",
@@ -33,5 +35,8 @@
   "chevvyenchants.command.poison_edge.need_sword": "Hold a sword in your main hand.",
   "chevvyenchants.command.lava_stride.added": "Applied Lava Stride to the held boots.",
   "chevvyenchants.command.lava_stride.cleared": "Removed Lava Stride from the held item.",
-  "chevvyenchants.command.lava_stride.need_boots": "Hold boots in your main hand."
+  "chevvyenchants.command.lava_stride.need_boots": "Hold boots in your main hand.",
+  "chevvyenchants.command.sustenance.added": "Applied Sustenance to the held armor.",
+  "chevvyenchants.command.sustenance.cleared": "Removed Sustenance from the held item.",
+  "chevvyenchants.command.sustenance.need_armor": "Hold armor in your main hand."
 }

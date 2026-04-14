@@ -20,6 +20,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		WitherTouch.register(this);
 		PoisonEdge.register(this);
 		LavaStride.register(this);
+		Sustenance.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }
