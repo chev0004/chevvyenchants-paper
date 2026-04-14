@@ -32,7 +32,7 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			return;
 		}
 		if (args.length < 2) {
-			sender.sendMessage(Component.text("Usage: /chevvyenchants <excavation|gravedigger|emberheart|deforestation|withertouch|poisonedge> <add|clear>", NamedTextColor.YELLOW));
+			sender.sendMessage(Component.text("Usage: /chevvyenchants <excavation|gravedigger|emberheart|deforestation|withertouch|poisonedge|lavastride> <add|clear>", NamedTextColor.YELLOW));
 			sender.sendMessage(Component.text("Run as a player in-game with the correct item in your main hand.", NamedTextColor.GRAY));
 			return;
 		}
@@ -86,8 +86,15 @@ final class ChevvyEnchantCommands implements BasicCommand {
 					PoisonEdge.runClear(sender);
 				}
 				break;
+			case "lavastride":
+				if (add) {
+					LavaStride.runAdd(sender);
+				} else {
+					LavaStride.runClear(sender);
+				}
+				break;
 			default:
-				sender.sendMessage(Component.text("Unknown subcommand. Use excavation, gravedigger, emberheart, deforestation, withertouch, or poisonedge.", NamedTextColor.RED));
+				sender.sendMessage(Component.text("Unknown subcommand. Use excavation, gravedigger, emberheart, deforestation, withertouch, poisonedge, or lavastride.", NamedTextColor.RED));
 		}
 	}
 
@@ -98,7 +105,7 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		}
 		if (args.length <= 1) {
 			String prefix = args.length == 0 ? "" : args[0].toLowerCase(Locale.ROOT);
-			return Stream.of("excavation", "gravedigger", "emberheart", "deforestation", "withertouch", "poisonedge")
+			return Stream.of("excavation", "gravedigger", "emberheart", "deforestation", "withertouch", "poisonedge", "lavastride")
 				.filter(s -> prefix.isEmpty() || s.startsWith(prefix))
 				.toList();
 		}
