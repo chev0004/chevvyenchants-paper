@@ -25,13 +25,19 @@ final class ChevvyVillagerTrades {
 
 	private static final int MIN_VILLAGER_LEVEL = 4;
 
-	private static final List<EnchantOffer> CUSTOM_ENCHANT_POOL = List.of(
+	private static final List<EnchantOffer> TOOLSMITH_POOL = List.of(
 		new EnchantOffer(ChevvyEnchantKeys.EXCAVATION, 20),
 		new EnchantOffer(ChevvyEnchantKeys.GRAVEDIGGER, 18),
-		new EnchantOffer(ChevvyEnchantKeys.DEFORESTATION, 22),
-		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28),
+		new EnchantOffer(ChevvyEnchantKeys.DEFORESTATION, 22)
+	);
+
+	private static final List<EnchantOffer> WEAPONSMITH_POOL = List.of(
 		new EnchantOffer(ChevvyEnchantKeys.WITHER_TOUCH, 26),
 		new EnchantOffer(ChevvyEnchantKeys.POISON_EDGE, 26)
+	);
+
+	private static final List<EnchantOffer> ARMORER_POOL = List.of(
+		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28)
 	);
 
 	private ChevvyVillagerTrades() {}
@@ -65,13 +71,30 @@ final class ChevvyVillagerTrades {
 		if (prof == Villager.Profession.NONE || prof == Villager.Profession.NITWIT) {
 			return;
 		}
-		int idx = (int) (Math.abs(villager.getUniqueId().getLeastSignificantBits()) % CUSTOM_ENCHANT_POOL.size());
-		EnchantOffer chosen = CUSTOM_ENCHANT_POOL.get(idx);
+		List<EnchantOffer> pool = poolForProfession(prof);
+		if (pool.isEmpty()) {
+			return;
+		}
+		int idx = (int) (Math.abs(villager.getUniqueId().getLeastSignificantBits()) % pool.size());
+		EnchantOffer chosen = pool.get(idx);
 		Enchantment chosenEnchant = Enchantment.getByKey(chosen.key());
 		if (chosenEnchant != null && !hasEnchantedBookTrade(villager, chosenEnchant)) {
-			removePoolBookTrades(villager, CUSTOM_ENCHANT_POOL);
+			removePoolBookTrades(villager, pool);
 			addBookTrade(villager, chosenEnchant, chosen.basePrice(), ThreadLocalRandom.current().nextInt(-2, 3));
 		}
+	}
+
+	private static List<EnchantOffer> poolForProfession(Villager.Profession profession) {
+		if (profession == Villager.Profession.TOOLSMITH) {
+			return TOOLSMITH_POOL;
+		}
+		if (profession == Villager.Profession.WEAPONSMITH) {
+			return WEAPONSMITH_POOL;
+		}
+		if (profession == Villager.Profession.ARMORER) {
+			return ARMORER_POOL;
+		}
+		return List.of();
 	}
 
 	private static void removePoolBookTrades(Villager villager, List<EnchantOffer> pool) {
