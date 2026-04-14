@@ -1,0 +1,32 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.chevvyenchants.wither_touch"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.0,
+          "per_level_above_first": 0.0
+        },
+        "attribute": "minecraft:attack_damage",
+        "id": "chevvyenchants:wither_touch_registry_stub",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 41,
+    "per_level_above_first": 10
+  },
+  "max_level": 2,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 10
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#minecraft:swords",
+  "weight": 5
+}
