@@ -3,7 +3,11 @@
   "enchantment.chevvyenchants.gravedigger": "大整地",
   "enchantment.chevvyenchants.ember_heart": "炎心",
   "enchantment.chevvyenchants.deforestation": "大伐採",
+  "enchantment.chevvyenchants.wither_touch": "枯刃",
+  "enchantment.chevvyenchants.poison_edge": "毒刃",
   "chevvyenchants.deforestation": "大伐採",
+  "chevvyenchants.wither_touch": "枯刃",
+  "chevvyenchants.poison_edge": "毒刃",
   "chevvyenchants.command.deforestation.added": "手持ちの斧に【大伐採】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.deforestation.cleared": "手持ちのアイテムから【大伐採】の力を解き放った。",
   "chevvyenchants.command.deforestation.need_axe": "メインハンドに斧を構えよ。",
@@ -18,5 +22,11 @@
   "chevvyenchants.command.ember_heart.added": "手持ちのチェストプレートに【炎心】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.ember_heart.cleared": "手持ちのアイテムから【炎心】の力を解き放った。",
   "chevvyenchants.command.ember_heart.need_chestplate": "メインハンドにチェストプレートを構えよ。",
-  "chevvyenchants.command.ember_heart.players_only": "このコマンドはプレイヤーのみが使用できる。"
+  "chevvyenchants.command.ember_heart.players_only": "このコマンドはプレイヤーのみが使用できる。",
+  "chevvyenchants.command.wither_touch.added": "手持ちの剣に【枯刃】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.wither_touch.cleared": "手持ちのアイテムから【枯刃】の力を解き放った。",
+  "chevvyenchants.command.wither_touch.need_sword": "メインハンドに剣を構えよ。",
+  "chevvyenchants.command.poison_edge.added": "手持ちの剣に【毒刃】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.poison_edge.cleared": "手持ちのアイテムから【毒刃】の力を解き放った。",
+  "chevvyenchants.command.poison_edge.need_sword": "メインハンドに剣を構えよ。"
 }
