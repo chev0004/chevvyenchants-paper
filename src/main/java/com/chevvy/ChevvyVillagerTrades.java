@@ -21,6 +21,17 @@ final class ChevvyVillagerTrades {
 	private static final int MERCHANT_XP = 15;
 	private static final float PRICE_MULTIPLIER = 0.05f;
 
+	private record EnchantOffer(org.bukkit.NamespacedKey key, int basePrice) {}
+
+	private static final int MIN_VILLAGER_LEVEL = 4;
+
+	private static final List<EnchantOffer> CUSTOM_ENCHANT_POOL = List.of(
+		new EnchantOffer(ChevvyEnchantKeys.EXCAVATION, 20),
+		new EnchantOffer(ChevvyEnchantKeys.GRAVEDIGGER, 18),
+		new EnchantOffer(ChevvyEnchantKeys.DEFORESTATION, 22),
+		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28)
+	);
+
 	private ChevvyVillagerTrades() {}
 
 	static void register(JavaPlugin plugin) {
@@ -45,26 +56,34 @@ final class ChevvyVillagerTrades {
 	}
 
 	private static void maybeInject(Villager villager) {
-		if (villager.getProfession() == Villager.Profession.TOOLSMITH && villager.getVillagerLevel() >= 4) {
-			Enchantment ex = Enchantment.getByKey(ChevvyEnchantKeys.EXCAVATION);
-			Enchantment gr = Enchantment.getByKey(ChevvyEnchantKeys.GRAVEDIGGER);
-			if (ex != null && !hasEnchantedBookTrade(villager, ex)) {
-				addBookTrade(villager, ex, 20, ThreadLocalRandom.current().nextInt(-2, 3));
-			}
-			if (gr != null && !hasEnchantedBookTrade(villager, gr)) {
-				addBookTrade(villager, gr, 18, ThreadLocalRandom.current().nextInt(-2, 3));
-			}
-			Enchantment df = Enchantment.getByKey(ChevvyEnchantKeys.DEFORESTATION);
-			if (df != null && !hasEnchantedBookTrade(villager, df)) {
-				addBookTrade(villager, df, 22, ThreadLocalRandom.current().nextInt(-2, 3));
-			}
+		if (villager.getVillagerLevel() < MIN_VILLAGER_LEVEL) {
+			return;
 		}
-		if (villager.getProfession() == Villager.Profession.ARMORER && villager.getVillagerLevel() >= 4) {
-			Enchantment em = Enchantment.getByKey(ChevvyEnchantKeys.EMBER_HEART);
-			if (em != null && !hasEnchantedBookTrade(villager, em)) {
-				addBookTrade(villager, em, 28, ThreadLocalRandom.current().nextInt(-2, 3));
-			}
+		Villager.Profession prof = villager.getProfession();
+		if (prof == Villager.Profession.NONE || prof == Villager.Profession.NITWIT) {
+			return;
 		}
+		int idx = (int) (Math.abs(villager.getUniqueId().getLeastSignificantBits()) % CUSTOM_ENCHANT_POOL.size());
+		EnchantOffer chosen = CUSTOM_ENCHANT_POOL.get(idx);
+		Enchantment chosenEnchant = Enchantment.getByKey(chosen.key());
+		if (chosenEnchant != null && !hasEnchantedBookTrade(villager, chosenEnchant)) {
+			removePoolBookTrades(villager, CUSTOM_ENCHANT_POOL);
+			addBookTrade(villager, chosenEnchant, chosen.basePrice(), ThreadLocalRandom.current().nextInt(-2, 3));
+		}
+	}
+
+	private static void removePoolBookTrades(Villager villager, List<EnchantOffer> pool) {
+		List<MerchantRecipe> recipes = new ArrayList<>(villager.getRecipes());
+		boolean changed = false;
+		for (EnchantOffer offer : pool) {
+			Enchantment enchant = Enchantment.getByKey(offer.key());
+			if (enchant == null) continue;
+			changed |= recipes.removeIf(r ->
+				r.getResult().getType() == Material.ENCHANTED_BOOK
+				&& ChevvyItemUtil.getEnchantLevel(r.getResult(), enchant) > 0
+			);
+		}
+		if (changed) villager.setRecipes(recipes);
 	}
 
 	private static boolean hasEnchantedBookTrade(Villager villager, Enchantment enchantment) {
