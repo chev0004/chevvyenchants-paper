@@ -3,7 +3,11 @@
   "enchantment.chevvyenchants.gravedigger": "Gravedigger",
   "enchantment.chevvyenchants.ember_heart": "Ember Heart",
   "enchantment.chevvyenchants.deforestation": "Deforestation",
+  "enchantment.chevvyenchants.wither_touch": "Wither Touch",
+  "enchantment.chevvyenchants.poison_edge": "Poison Edge",
   "chevvyenchants.deforestation": "Deforestation",
+  "chevvyenchants.wither_touch": "Wither Touch",
+  "chevvyenchants.poison_edge": "Poison Edge",
   "chevvyenchants.command.deforestation.added": "Applied Deforestation to the held axe.",
   "chevvyenchants.command.deforestation.cleared": "Removed Deforestation from the held item.",
   "chevvyenchants.command.deforestation.need_axe": "Hold an axe in your main hand.",
@@ -18,5 +22,11 @@
   "chevvyenchants.command.ember_heart.added": "Applied Ember Heart to the held chestplate.",
   "chevvyenchants.command.ember_heart.cleared": "Removed Ember Heart from the held item.",
   "chevvyenchants.command.ember_heart.need_chestplate": "Hold a chestplate in your main hand.",
-  "chevvyenchants.command.ember_heart.players_only": "This command can only be used by a player."
+  "chevvyenchants.command.ember_heart.players_only": "This command can only be used by a player.",
+  "chevvyenchants.command.wither_touch.added": "Applied Withering Brand to the held sword.",
+  "chevvyenchants.command.wither_touch.cleared": "Removed Withering Brand from the held item.",
+  "chevvyenchants.command.wither_touch.need_sword": "Hold a sword in your main hand.",
+  "chevvyenchants.command.poison_edge.added": "Applied Venomfang to the held sword.",
+  "chevvyenchants.command.poison_edge.cleared": "Removed Venomfang from the held item.",
+  "chevvyenchants.command.poison_edge.need_sword": "Hold a sword in your main hand."
 }
