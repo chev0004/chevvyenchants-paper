@@ -29,7 +29,9 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.EXCAVATION, 20),
 		new EnchantOffer(ChevvyEnchantKeys.GRAVEDIGGER, 18),
 		new EnchantOffer(ChevvyEnchantKeys.DEFORESTATION, 22),
-		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28)
+		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28),
+		new EnchantOffer(ChevvyEnchantKeys.WITHER_TOUCH, 26),
+		new EnchantOffer(ChevvyEnchantKeys.POISON_EDGE, 26)
 	);
 
 	private ChevvyVillagerTrades() {}
@@ -110,6 +112,10 @@ final class ChevvyVillagerTrades {
 			EmberHeart.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.DEFORESTATION)) {
 			Deforestation.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.WITHER_TOUCH)) {
+			WitherTouch.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.POISON_EDGE)) {
+			PoisonEdge.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);
