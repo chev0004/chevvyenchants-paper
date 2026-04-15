@@ -63,5 +63,10 @@
   "chevvyenchants.paralyze": "Paralyze",
   "chevvyenchants.command.paralyze.added": "Applied Paralyze to the held sword.",
   "chevvyenchants.command.paralyze.cleared": "Removed Paralyze from the held item.",
-  "chevvyenchants.command.paralyze.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.paralyze.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.blind": "Blind",
+  "chevvyenchants.blind": "Blind",
+  "chevvyenchants.command.blind.added": "Applied Blind to the held sword.",
+  "chevvyenchants.command.blind.cleared": "Removed Blind from the held item.",
+  "chevvyenchants.command.blind.need_sword": "Hold a sword in your main hand."
 }

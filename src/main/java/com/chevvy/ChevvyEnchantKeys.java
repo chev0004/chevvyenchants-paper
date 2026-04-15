@@ -16,5 +16,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey EXECUTIONER = new NamespacedKey(ChevvyEnchants.MOD_ID, "executioner");
 	public static final NamespacedKey BLEED = new NamespacedKey(ChevvyEnchants.MOD_ID, "bleed");
 	public static final NamespacedKey PARALYZE = new NamespacedKey(ChevvyEnchants.MOD_ID, "paralyze");
+	public static final NamespacedKey BLIND = new NamespacedKey(ChevvyEnchants.MOD_ID, "blind");
 	private ChevvyEnchantKeys() {}
 }

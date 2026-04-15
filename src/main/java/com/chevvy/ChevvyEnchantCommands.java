@@ -27,7 +27,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"lifesteal",
 		"executioner",
 		"bleed",
-		"paralyze"
+		"paralyze",
+		"blind"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -94,6 +95,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "paralyze":
 			if (add) { Paralyze.runAdd(sender); } else { Paralyze.runClear(sender); }
+			break;
+		case "blind":
+			if (add) { Blind.runAdd(sender); } else { Blind.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));

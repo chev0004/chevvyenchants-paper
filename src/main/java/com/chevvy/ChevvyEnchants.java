@@ -26,6 +26,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Executioner.register(this);
 		Bleed.register(this);
 		Paralyze.register(this);
+		Blind.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }
