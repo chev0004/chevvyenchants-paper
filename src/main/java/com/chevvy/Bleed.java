@@ -45,6 +45,10 @@ public final class Bleed {
 		Bukkit.getScheduler().runTaskTimer(pl, Bleed::tickBleed, 20L, 20L);
 	}
 
+	public static void clearForEntity(LivingEntity entity) {
+		BLEED_TARGETS.remove(entity.getUniqueId());
+	}
+
 	private static int maxStacksForLevel(int level) {
 		return switch (level) {
 			case 1 -> 3;

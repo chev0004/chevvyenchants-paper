@@ -10,3 +10,6 @@ permissions:
   chevvyenchants.commands:
     description: Use /chevvyenchants admin commands
     default: op
+  chevvyenchants.reflect:
+    description: Spawn reflect test dummies with /chevvyreflect
+    default: op
