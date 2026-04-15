@@ -53,5 +53,10 @@
   "chevvyenchants.executioner": "Executioner",
   "chevvyenchants.command.executioner.added": "Applied Executioner to the held sword.",
   "chevvyenchants.command.executioner.cleared": "Removed Executioner from the held item.",
-  "chevvyenchants.command.executioner.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.executioner.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.bleed": "Bleed",
+  "chevvyenchants.bleed": "Bleed",
+  "chevvyenchants.command.bleed.added": "Applied Bleed to the held sword.",
+  "chevvyenchants.command.bleed.cleared": "Removed Bleed from the held item.",
+  "chevvyenchants.command.bleed.need_sword": "Hold a sword in your main hand."
 }

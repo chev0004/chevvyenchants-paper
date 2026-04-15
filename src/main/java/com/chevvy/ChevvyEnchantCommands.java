@@ -25,7 +25,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"sustenance",
 		"minerslantern",
 		"lifesteal",
-		"executioner"
+		"executioner",
+		"bleed"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -86,6 +87,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "executioner":
 			if (add) { Executioner.runAdd(sender); } else { Executioner.runClear(sender); }
+			break;
+		case "bleed":
+			if (add) { Bleed.runAdd(sender); } else { Bleed.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
