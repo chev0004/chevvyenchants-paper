@@ -9,10 +9,6 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import net.kyori.adventure.text.Component;
@@ -23,25 +19,13 @@ public final class Sustenance {
 	public static final String LORE_KEY = "enchantment.chevvyenchants.sustenance";
 
 	private static final int POINTS_PER_FOOD = 64;
+	private static final int FULL_SET_POINTS_PER_TICK = 8;
 	private static final Map<UUID, Integer> FOOD_POINTS = new HashMap<>();
 
 	private Sustenance() {}
 
 	public static void register(JavaPlugin plugin) {
-		Bukkit.getPluginManager().registerEvents(new SustenanceListener(), plugin);
 		Bukkit.getScheduler().runTaskTimer(plugin, Sustenance::tickAllWorlds, 20L, 20L);
-	}
-
-	private static final class SustenanceListener implements Listener {
-		@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-		public void onFoodLevelChange(FoodLevelChangeEvent event) {
-			if (!(event.getEntity() instanceof Player player)) {
-				return;
-			}
-			if (event.getFoodLevel() < player.getFoodLevel() && equippedCount(player) >= 4) {
-				event.setCancelled(true);
-			}
-		}
 	}
 
 	private static void tickAllWorlds() {
@@ -53,14 +37,8 @@ public final class Sustenance {
 					FOOD_POINTS.remove(id);
 					continue;
 				}
-				if (equipped >= 4) {
-					player.setFoodLevel(20);
-					if (player.getSaturation() < 20f) {
-						player.setSaturation(20f);
-					}
-					continue;
-				}
-				int points = FOOD_POINTS.getOrDefault(id, 0) + equipped;
+				int gain = equipped < 4 ? equipped : FULL_SET_POINTS_PER_TICK;
+				int points = FOOD_POINTS.getOrDefault(id, 0) + gain;
 				while (points >= POINTS_PER_FOOD && player.getFoodLevel() < 20) {
 					player.setFoodLevel(player.getFoodLevel() + 1);
 					points -= POINTS_PER_FOOD;
