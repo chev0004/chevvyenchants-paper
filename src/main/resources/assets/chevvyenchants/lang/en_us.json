@@ -83,5 +83,10 @@
   "chevvyenchants.last_stand": "Last Stand",
   "chevvyenchants.command.last_stand.added": "Applied Last Stand to the held chestplate.",
   "chevvyenchants.command.last_stand.cleared": "Removed Last Stand from the held item.",
-  "chevvyenchants.command.last_stand.need_chestplate": "Hold a chestplate in your main hand."
+  "chevvyenchants.command.last_stand.need_chestplate": "Hold a chestplate in your main hand.",
+  "enchantment.chevvyenchants.auto_replant": "Auto Replant",
+  "chevvyenchants.auto_replant": "Auto Replant",
+  "chevvyenchants.command.auto_replant.added": "Applied Auto Replant to the held hoe.",
+  "chevvyenchants.command.auto_replant.cleared": "Removed Auto Replant from the held item.",
+  "chevvyenchants.command.auto_replant.need_hoe": "Hold a hoe in your main hand."
 }

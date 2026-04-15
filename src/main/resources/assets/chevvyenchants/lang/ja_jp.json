@@ -83,5 +83,10 @@
   "chevvyenchants.last_stand": "死守",
   "chevvyenchants.command.last_stand.added": "手持ちのチェストプレートに【死守】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.last_stand.cleared": "手持ちのアイテムから【死守】の力を解き放った。",
-  "chevvyenchants.command.last_stand.need_chestplate": "メインハンドにチェストプレートを構えよ。"
+  "chevvyenchants.command.last_stand.need_chestplate": "メインハンドにチェストプレートを構えよ。",
+  "enchantment.chevvyenchants.auto_replant": "自動再植",
+  "chevvyenchants.auto_replant": "自動再植",
+  "chevvyenchants.command.auto_replant.added": "手持ちのクワに【自動再植】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.auto_replant.cleared": "手持ちのアイテムから【自動再植】の力を解き放った。",
+  "chevvyenchants.command.auto_replant.need_hoe": "メインハンドにクワを構えよ。"
 }

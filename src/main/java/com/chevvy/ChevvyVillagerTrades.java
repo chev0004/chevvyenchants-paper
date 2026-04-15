@@ -29,7 +29,8 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.EXCAVATION, 20),
 		new EnchantOffer(ChevvyEnchantKeys.GRAVEDIGGER, 18),
 		new EnchantOffer(ChevvyEnchantKeys.DEFORESTATION, 22),
-		new EnchantOffer(ChevvyEnchantKeys.MINERS_LANTERN, 20)
+		new EnchantOffer(ChevvyEnchantKeys.MINERS_LANTERN, 20),
+		new EnchantOffer(ChevvyEnchantKeys.AUTO_REPLANT, 16)
 	);
 
 	private static final List<EnchantOffer> WEAPONSMITH_POOL = List.of(
@@ -172,6 +173,8 @@ final class ChevvyVillagerTrades {
 			Windwalker.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.LAST_STAND)) {
 			LastStand.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.AUTO_REPLANT)) {
+			AutoReplant.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

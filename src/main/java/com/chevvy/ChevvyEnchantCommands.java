@@ -31,7 +31,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"blind",
 		"frostbite",
 		"windwalker",
-		"laststand"
+		"laststand",
+		"autoreplant"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -110,6 +111,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "laststand":
 			if (add) { LastStand.runAdd(sender); } else { LastStand.runClear(sender); }
+			break;
+		case "autoreplant":
+			if (add) { AutoReplant.runAdd(sender); } else { AutoReplant.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
