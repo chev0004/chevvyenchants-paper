@@ -35,7 +35,8 @@ final class ChevvyVillagerTrades {
 	private static final List<EnchantOffer> WEAPONSMITH_POOL = List.of(
 		new EnchantOffer(ChevvyEnchantKeys.WITHER_TOUCH, 26),
 		new EnchantOffer(ChevvyEnchantKeys.POISON_EDGE, 26),
-		new EnchantOffer(ChevvyEnchantKeys.LIFESTEAL, 30)
+		new EnchantOffer(ChevvyEnchantKeys.LIFESTEAL, 30),
+		new EnchantOffer(ChevvyEnchantKeys.EXECUTIONER, 28)
 	);
 
 	private static final List<EnchantOffer> ARMORER_POOL = List.of(
@@ -151,6 +152,8 @@ final class ChevvyVillagerTrades {
 			MinersLantern.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.LIFESTEAL)) {
 			Lifesteal.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.EXECUTIONER)) {
+			Executioner.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

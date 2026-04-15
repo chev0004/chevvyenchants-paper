@@ -48,5 +48,10 @@
   "chevvyenchants.lifesteal": "吸命刃",
   "chevvyenchants.command.lifesteal.added": "手持ちの剣に【吸命刃】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.lifesteal.cleared": "手持ちのアイテムから【吸命刃】の力を解き放った。",
-  "chevvyenchants.command.lifesteal.need_sword": "メインハンドに剣を構えよ。"
+  "chevvyenchants.command.lifesteal.need_sword": "メインハンドに剣を構えよ。",
+  "enchantment.chevvyenchants.executioner": "断罪",
+  "chevvyenchants.executioner": "断罪",
+  "chevvyenchants.command.executioner.added": "手持ちの剣に【断罪】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.executioner.cleared": "手持ちのアイテムから【断罪】の力を解き放った。",
+  "chevvyenchants.command.executioner.need_sword": "メインハンドに剣を構えよ。"
 }

@@ -48,5 +48,10 @@
   "chevvyenchants.lifesteal": "Lifesteal",
   "chevvyenchants.command.lifesteal.added": "Applied Lifesteal to the held sword.",
   "chevvyenchants.command.lifesteal.cleared": "Removed Lifesteal from the held item.",
-  "chevvyenchants.command.lifesteal.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.lifesteal.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.executioner": "Executioner",
+  "chevvyenchants.executioner": "Executioner",
+  "chevvyenchants.command.executioner.added": "Applied Executioner to the held sword.",
+  "chevvyenchants.command.executioner.cleared": "Removed Executioner from the held item.",
+  "chevvyenchants.command.executioner.need_sword": "Hold a sword in your main hand."
 }

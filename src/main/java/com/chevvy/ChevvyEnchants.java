@@ -23,6 +23,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Sustenance.register(this);
 		MinersLantern.register(this);
 		Lifesteal.register(this);
+		Executioner.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }
