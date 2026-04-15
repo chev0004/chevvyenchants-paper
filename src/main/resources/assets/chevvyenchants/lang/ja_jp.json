@@ -78,5 +78,10 @@
   "chevvyenchants.windwalker": "風歩",
   "chevvyenchants.command.windwalker.added": "手持ちのブーツに【風歩】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.windwalker.cleared": "手持ちのアイテムから【風歩】の力を解き放った。",
-  "chevvyenchants.command.windwalker.need_boots": "メインハンドにブーツを構えよ。"
+  "chevvyenchants.command.windwalker.need_boots": "メインハンドにブーツを構えよ。",
+  "enchantment.chevvyenchants.last_stand": "死守",
+  "chevvyenchants.last_stand": "死守",
+  "chevvyenchants.command.last_stand.added": "手持ちのチェストプレートに【死守】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.last_stand.cleared": "手持ちのアイテムから【死守】の力を解き放った。",
+  "chevvyenchants.command.last_stand.need_chestplate": "メインハンドにチェストプレートを構えよ。"
 }

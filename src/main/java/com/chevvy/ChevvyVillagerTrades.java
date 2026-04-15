@@ -47,7 +47,8 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.EMBER_HEART, 28),
 		new EnchantOffer(ChevvyEnchantKeys.LAVA_STRIDE, 24),
 		new EnchantOffer(ChevvyEnchantKeys.SUSTENANCE, 18),
-		new EnchantOffer(ChevvyEnchantKeys.WINDWALKER, 22)
+		new EnchantOffer(ChevvyEnchantKeys.WINDWALKER, 22),
+		new EnchantOffer(ChevvyEnchantKeys.LAST_STAND, 30)
 	);
 
 	private ChevvyVillagerTrades() {}
@@ -169,6 +170,8 @@ final class ChevvyVillagerTrades {
 			Frostbite.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.WINDWALKER)) {
 			Windwalker.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.LAST_STAND)) {
+			LastStand.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

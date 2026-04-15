@@ -78,5 +78,10 @@
   "chevvyenchants.windwalker": "Windwalker",
   "chevvyenchants.command.windwalker.added": "Applied Windwalker to the held boots.",
   "chevvyenchants.command.windwalker.cleared": "Removed Windwalker from the held item.",
-  "chevvyenchants.command.windwalker.need_boots": "Hold boots in your main hand."
+  "chevvyenchants.command.windwalker.need_boots": "Hold boots in your main hand.",
+  "enchantment.chevvyenchants.last_stand": "Last Stand",
+  "chevvyenchants.last_stand": "Last Stand",
+  "chevvyenchants.command.last_stand.added": "Applied Last Stand to the held chestplate.",
+  "chevvyenchants.command.last_stand.cleared": "Removed Last Stand from the held item.",
+  "chevvyenchants.command.last_stand.need_chestplate": "Hold a chestplate in your main hand."
 }
