@@ -21,6 +21,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		PoisonEdge.register(this);
 		LavaStride.register(this);
 		Sustenance.register(this);
+		MinersLantern.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

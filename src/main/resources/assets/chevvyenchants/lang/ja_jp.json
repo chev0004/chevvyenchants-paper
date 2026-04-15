@@ -38,5 +38,10 @@
   "chevvyenchants.command.lava_stride.need_boots": "メインハンドにブーツを構えよ。",
   "chevvyenchants.command.sustenance.added": "手持ちの防具に【滋養】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.sustenance.cleared": "手持ちのアイテムから【滋養】の力を解き放った。",
-  "chevvyenchants.command.sustenance.need_armor": "メインハンドに防具を構えよ。"
+  "chevvyenchants.command.sustenance.need_armor": "メインハンドに防具を構えよ。",
+  "enchantment.chevvyenchants.miners_lantern": "採掘灯",
+  "chevvyenchants.miners_lantern": "採掘灯",
+  "chevvyenchants.command.miners_lantern.added": "手持ちのツルハシに【採掘灯】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.miners_lantern.cleared": "手持ちのアイテムから【採掘灯】の力を解き放った。",
+  "chevvyenchants.command.miners_lantern.need_pickaxe": "メインハンドにツルハシを構えよ。"
 }

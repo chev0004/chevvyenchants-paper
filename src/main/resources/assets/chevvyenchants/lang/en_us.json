@@ -38,5 +38,10 @@
   "chevvyenchants.command.lava_stride.need_boots": "Hold boots in your main hand.",
   "chevvyenchants.command.sustenance.added": "Applied Sustenance to the held armor.",
   "chevvyenchants.command.sustenance.cleared": "Removed Sustenance from the held item.",
-  "chevvyenchants.command.sustenance.need_armor": "Hold armor in your main hand."
+  "chevvyenchants.command.sustenance.need_armor": "Hold armor in your main hand.",
+  "enchantment.chevvyenchants.miners_lantern": "Miner's Lantern",
+  "chevvyenchants.miners_lantern": "Miner's Lantern",
+  "chevvyenchants.command.miners_lantern.added": "Applied Miner's Lantern to the held pickaxe.",
+  "chevvyenchants.command.miners_lantern.cleared": "Removed Miner's Lantern from the held item.",
+  "chevvyenchants.command.miners_lantern.need_pickaxe": "Hold a pickaxe in your main hand."
 }
