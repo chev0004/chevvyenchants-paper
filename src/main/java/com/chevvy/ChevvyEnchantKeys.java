@@ -12,5 +12,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey LAVA_STRIDE = new NamespacedKey(ChevvyEnchants.MOD_ID, "lava_stride");
 	public static final NamespacedKey SUSTENANCE = new NamespacedKey(ChevvyEnchants.MOD_ID, "sustenance");
 	public static final NamespacedKey MINERS_LANTERN = new NamespacedKey(ChevvyEnchants.MOD_ID, "miners_lantern");
+	public static final NamespacedKey LIFESTEAL = new NamespacedKey(ChevvyEnchants.MOD_ID, "lifesteal");
 	private ChevvyEnchantKeys() {}
 }

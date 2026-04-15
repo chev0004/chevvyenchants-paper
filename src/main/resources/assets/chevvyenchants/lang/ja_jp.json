@@ -43,5 +43,10 @@
   "chevvyenchants.miners_lantern": "採掘灯",
   "chevvyenchants.command.miners_lantern.added": "手持ちのツルハシに【採掘灯】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.miners_lantern.cleared": "手持ちのアイテムから【採掘灯】の力を解き放った。",
-  "chevvyenchants.command.miners_lantern.need_pickaxe": "メインハンドにツルハシを構えよ。"
+  "chevvyenchants.command.miners_lantern.need_pickaxe": "メインハンドにツルハシを構えよ。",
+  "enchantment.chevvyenchants.lifesteal": "吸命刃",
+  "chevvyenchants.lifesteal": "吸命刃",
+  "chevvyenchants.command.lifesteal.added": "手持ちの剣に【吸命刃】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.lifesteal.cleared": "手持ちのアイテムから【吸命刃】の力を解き放った。",
+  "chevvyenchants.command.lifesteal.need_sword": "メインハンドに剣を構えよ。"
 }

@@ -43,5 +43,10 @@
   "chevvyenchants.miners_lantern": "Miner's Lantern",
   "chevvyenchants.command.miners_lantern.added": "Applied Miner's Lantern to the held pickaxe.",
   "chevvyenchants.command.miners_lantern.cleared": "Removed Miner's Lantern from the held item.",
-  "chevvyenchants.command.miners_lantern.need_pickaxe": "Hold a pickaxe in your main hand."
+  "chevvyenchants.command.miners_lantern.need_pickaxe": "Hold a pickaxe in your main hand.",
+  "enchantment.chevvyenchants.lifesteal": "Lifesteal",
+  "chevvyenchants.lifesteal": "Lifesteal",
+  "chevvyenchants.command.lifesteal.added": "Applied Lifesteal to the held sword.",
+  "chevvyenchants.command.lifesteal.cleared": "Removed Lifesteal from the held item.",
+  "chevvyenchants.command.lifesteal.need_sword": "Hold a sword in your main hand."
 }
