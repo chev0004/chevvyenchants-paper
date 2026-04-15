@@ -29,7 +29,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"bleed",
 		"paralyze",
 		"blind",
-		"frostbite"
+		"frostbite",
+		"windwalker"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -102,6 +103,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "frostbite":
 			if (add) { Frostbite.runAdd(sender); } else { Frostbite.runClear(sender); }
+			break;
+		case "windwalker":
+			if (add) { Windwalker.runAdd(sender); } else { Windwalker.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));

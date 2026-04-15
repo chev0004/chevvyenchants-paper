@@ -28,6 +28,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Paralyze.register(this);
 		Blind.register(this);
 		Frostbite.register(this);
+		Windwalker.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

@@ -73,5 +73,10 @@
   "chevvyenchants.frostbite": "Frostbite",
   "chevvyenchants.command.frostbite.added": "Applied Frostbite to the held sword.",
   "chevvyenchants.command.frostbite.cleared": "Removed Frostbite from the held item.",
-  "chevvyenchants.command.frostbite.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.frostbite.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.windwalker": "Windwalker",
+  "chevvyenchants.windwalker": "Windwalker",
+  "chevvyenchants.command.windwalker.added": "Applied Windwalker to the held boots.",
+  "chevvyenchants.command.windwalker.cleared": "Removed Windwalker from the held item.",
+  "chevvyenchants.command.windwalker.need_boots": "Hold boots in your main hand."
 }
