@@ -37,7 +37,8 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.POISON_EDGE, 26),
 		new EnchantOffer(ChevvyEnchantKeys.LIFESTEAL, 30),
 		new EnchantOffer(ChevvyEnchantKeys.EXECUTIONER, 28),
-		new EnchantOffer(ChevvyEnchantKeys.BLEED, 24)
+		new EnchantOffer(ChevvyEnchantKeys.BLEED, 24),
+		new EnchantOffer(ChevvyEnchantKeys.PARALYZE, 26)
 	);
 
 	private static final List<EnchantOffer> ARMORER_POOL = List.of(
@@ -157,6 +158,8 @@ final class ChevvyVillagerTrades {
 			Executioner.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.BLEED)) {
 			Bleed.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.PARALYZE)) {
+			Paralyze.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

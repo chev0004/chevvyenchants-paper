@@ -58,5 +58,10 @@
   "chevvyenchants.bleed": "裂傷",
   "chevvyenchants.command.bleed.added": "手持ちの剣に【裂傷】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.bleed.cleared": "手持ちのアイテムから【裂傷】の力を解き放った。",
-  "chevvyenchants.command.bleed.need_sword": "メインハンドに剣を構えよ。"
+  "chevvyenchants.command.bleed.need_sword": "メインハンドに剣を構えよ。",
+  "enchantment.chevvyenchants.paralyze": "麻痺撃",
+  "chevvyenchants.paralyze": "麻痺撃",
+  "chevvyenchants.command.paralyze.added": "手持ちの剣に【麻痺撃】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.paralyze.cleared": "手持ちのアイテムから【麻痺撃】の力を解き放った。",
+  "chevvyenchants.command.paralyze.need_sword": "メインハンドに剣を構えよ。"
 }

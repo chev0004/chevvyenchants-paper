@@ -58,5 +58,10 @@
   "chevvyenchants.bleed": "Bleed",
   "chevvyenchants.command.bleed.added": "Applied Bleed to the held sword.",
   "chevvyenchants.command.bleed.cleared": "Removed Bleed from the held item.",
-  "chevvyenchants.command.bleed.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.bleed.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.paralyze": "Paralyze",
+  "chevvyenchants.paralyze": "Paralyze",
+  "chevvyenchants.command.paralyze.added": "Applied Paralyze to the held sword.",
+  "chevvyenchants.command.paralyze.cleared": "Removed Paralyze from the held item.",
+  "chevvyenchants.command.paralyze.need_sword": "Hold a sword in your main hand."
 }
