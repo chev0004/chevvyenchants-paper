@@ -52,6 +52,10 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.LAST_STAND, 30)
 	);
 
+	private static final List<EnchantOffer> LIBRARIAN_POOL = List.of(
+		new EnchantOffer(ChevvyEnchantKeys.SOULBOUND, 38)
+	);
+
 	private ChevvyVillagerTrades() {}
 
 	static void register(JavaPlugin plugin) {
@@ -105,6 +109,9 @@ final class ChevvyVillagerTrades {
 		}
 		if (profession == Villager.Profession.ARMORER) {
 			return ARMORER_POOL;
+		}
+		if (profession == Villager.Profession.LIBRARIAN) {
+			return LIBRARIAN_POOL;
 		}
 		return List.of();
 	}
@@ -175,6 +182,8 @@ final class ChevvyVillagerTrades {
 			LastStand.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.AUTO_REPLANT)) {
 			AutoReplant.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.SOULBOUND)) {
+			Soulbound.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

@@ -31,6 +31,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Windwalker.register(this);
 		LastStand.register(this);
 		AutoReplant.register(this);
+		Soulbound.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

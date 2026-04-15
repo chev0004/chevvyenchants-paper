@@ -88,5 +88,10 @@
   "chevvyenchants.auto_replant": "Auto Replant",
   "chevvyenchants.command.auto_replant.added": "Applied Auto Replant to the held hoe.",
   "chevvyenchants.command.auto_replant.cleared": "Removed Auto Replant from the held item.",
-  "chevvyenchants.command.auto_replant.need_hoe": "Hold a hoe in your main hand."
+  "chevvyenchants.command.auto_replant.need_hoe": "Hold a hoe in your main hand.",
+  "enchantment.chevvyenchants.soulbound": "Soulbound",
+  "chevvyenchants.soulbound": "Soulbound",
+  "chevvyenchants.command.soulbound.added": "Applied Soulbound to the held item.",
+  "chevvyenchants.command.soulbound.cleared": "Removed Soulbound from the held item.",
+  "chevvyenchants.command.soulbound.need_item": "Hold an item in your main hand."
 }

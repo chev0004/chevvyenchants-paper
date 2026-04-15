@@ -32,7 +32,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"frostbite",
 		"windwalker",
 		"laststand",
-		"autoreplant"
+		"autoreplant",
+		"soulbound"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -114,6 +115,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "autoreplant":
 			if (add) { AutoReplant.runAdd(sender); } else { AutoReplant.runClear(sender); }
+			break;
+		case "soulbound":
+			if (add) { Soulbound.runAdd(sender); } else { Soulbound.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
