@@ -33,7 +33,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"windwalker",
 		"laststand",
 		"autoreplant",
-		"soulbound"
+		"soulbound",
+		"purify"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -118,6 +119,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "soulbound":
 			if (add) { Soulbound.runAdd(sender); } else { Soulbound.runClear(sender); }
+			break;
+		case "purify":
+			if (add) { Purify.runAdd(sender); } else { Purify.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));

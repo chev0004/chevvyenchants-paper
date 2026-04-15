@@ -32,6 +32,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		LastStand.register(this);
 		AutoReplant.register(this);
 		Soulbound.register(this);
+		Purify.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

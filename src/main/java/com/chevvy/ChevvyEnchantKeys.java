@@ -22,5 +22,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey LAST_STAND = new NamespacedKey(ChevvyEnchants.MOD_ID, "last_stand");
 	public static final NamespacedKey AUTO_REPLANT = new NamespacedKey(ChevvyEnchants.MOD_ID, "auto_replant");
 	public static final NamespacedKey SOULBOUND = new NamespacedKey(ChevvyEnchants.MOD_ID, "soulbound");
+	public static final NamespacedKey PURIFY = new NamespacedKey(ChevvyEnchants.MOD_ID, "purify");
 	private ChevvyEnchantKeys() {}
 }

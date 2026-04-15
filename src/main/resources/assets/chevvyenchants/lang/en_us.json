@@ -93,5 +93,10 @@
   "chevvyenchants.soulbound": "Soulbound",
   "chevvyenchants.command.soulbound.added": "Applied Soulbound to the held item.",
   "chevvyenchants.command.soulbound.cleared": "Removed Soulbound from the held item.",
-  "chevvyenchants.command.soulbound.need_item": "Hold an item in your main hand."
+  "chevvyenchants.command.soulbound.need_item": "Hold an item in your main hand.",
+  "enchantment.chevvyenchants.purify": "Purify",
+  "chevvyenchants.purify": "Purify",
+  "chevvyenchants.command.purify.added": "Applied Purify to the held chestplate.",
+  "chevvyenchants.command.purify.cleared": "Removed Purify from the held item.",
+  "chevvyenchants.command.purify.need_chestplate": "Hold a chestplate in your main hand."
 }

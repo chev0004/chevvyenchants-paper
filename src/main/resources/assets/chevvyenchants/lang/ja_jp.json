@@ -93,5 +93,10 @@
   "chevvyenchants.soulbound": "魂縛",
   "chevvyenchants.command.soulbound.added": "手持ちのアイテムに【魂縛】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.soulbound.cleared": "手持ちのアイテムから【魂縛】の力を解き放った。",
-  "chevvyenchants.command.soulbound.need_item": "メインハンドにアイテムを構えよ。"
+  "chevvyenchants.command.soulbound.need_item": "メインハンドにアイテムを構えよ。",
+  "enchantment.chevvyenchants.purify": "浄化",
+  "chevvyenchants.purify": "浄化",
+  "chevvyenchants.command.purify.added": "手持ちのチェストプレートに【浄化】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.purify.cleared": "手持ちのアイテムから【浄化】の力を解き放った。",
+  "chevvyenchants.command.purify.need_chestplate": "メインハンドにチェストプレートを構えよ。"
 }
