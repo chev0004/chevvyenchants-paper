@@ -13,6 +13,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.potion.PotionEffect;
@@ -30,22 +32,36 @@ public final class Frostbite {
 	private Frostbite() {}
 
 	public static void register(JavaPlugin pl) {
-		Bukkit.getPluginManager().registerEvents(new FrostbiteListener(), pl);
+		Bukkit.getPluginManager().registerEvents(new FrostbiteListener(pl), pl);
 		Bukkit.getScheduler().runTaskTimer(pl, Frostbite::tickFreeze, 0L, 1L);
 	}
 
+	public static void clearFrostbiteState(LivingEntity entity) {
+		var plug = Bukkit.getPluginManager().getPlugin(ChevvyEnchants.MOD_ID);
+		if (plug != null && entity.hasMetadata("chevvy_frostbite")) {
+			entity.removeMetadata("chevvy_frostbite", plug);
+		}
+		entity.setFreezeTicks(0);
+	}
+
 	private static void tickFreeze() {
+		int now = Bukkit.getCurrentTick();
 		for (World world : Bukkit.getWorlds()) {
 			for (LivingEntity entity : world.getLivingEntities()) {
-				if (entity.getFreezeTicks() <= 0) {
-					continue;
-				}
 				if (!entity.hasMetadata("chevvy_frostbite")) {
 					continue;
 				}
-				int target = entity.getMetadata("chevvy_frostbite").get(0).asInt();
-				if (entity.getFreezeTicks() < target) {
-					entity.setFreezeTicks(target);
+				var meta = entity.getMetadata("chevvy_frostbite").get(0);
+				long packed = meta.asLong();
+				int freezeTarget = (int) (packed >> 32);
+				int expiresAt = (int) packed;
+				if (now >= expiresAt) {
+					entity.removeMetadata("chevvy_frostbite",
+						Bukkit.getPluginManager().getPlugin(ChevvyEnchants.MOD_ID));
+					continue;
+				}
+				if (entity.getFreezeTicks() < freezeTarget) {
+					entity.setFreezeTicks(freezeTarget);
 				}
 				if (entity.getTicksLived() % 5 == 0) {
 					entity.getWorld().spawnParticle(
@@ -59,6 +75,22 @@ public final class Frostbite {
 	}
 
 	private static final class FrostbiteListener implements Listener {
+		private final JavaPlugin plugin;
+
+		private FrostbiteListener(JavaPlugin plugin) {
+			this.plugin = plugin;
+		}
+
+		@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+		public void onPlayerDeath(PlayerDeathEvent event) {
+			clearFrostbiteState(event.getEntity());
+		}
+
+		@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+		public void onPlayerRespawn(PlayerRespawnEvent event) {
+			clearFrostbiteState(event.getPlayer());
+		}
+
 		@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 		public void onMeleeHit(EntityDamageByEntityEvent event) {
 			if (!(event.getDamager() instanceof Player player)) {
@@ -84,18 +116,13 @@ public final class Frostbite {
 			}
 			int maxFreeze = target.getMaxFreezeTicks();
 			int freezeTicks = maxFreeze + (level * 40);
+			int slowTicks = 60 + 40 * level;
+			int expiresAt = Bukkit.getCurrentTick() + slowTicks;
+			long packed = ((long) freezeTicks << 32) | (expiresAt & 0xFFFFFFFFL);
 			target.setFreezeTicks(freezeTicks);
 			target.setMetadata("chevvy_frostbite",
-				new org.bukkit.metadata.FixedMetadataValue(
-					Bukkit.getPluginManager().getPlugin(ChevvyEnchants.MOD_ID), freezeTicks));
-			int slowTicks = 60 + 40 * level;
+				new org.bukkit.metadata.FixedMetadataValue(plugin, packed));
 			target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, slowTicks, level - 1, false, false, true));
-			Bukkit.getScheduler().runTaskLater(
-				Bukkit.getPluginManager().getPlugin(ChevvyEnchants.MOD_ID),
-				() -> target.removeMetadata("chevvy_frostbite",
-					Bukkit.getPluginManager().getPlugin(ChevvyEnchants.MOD_ID)),
-				slowTicks
-			);
 		}
 	}
 
