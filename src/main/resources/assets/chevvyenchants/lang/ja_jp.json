@@ -68,5 +68,10 @@
   "chevvyenchants.blind": "暗闇刃",
   "chevvyenchants.command.blind.added": "手持ちの剣に【暗闇刃】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.blind.cleared": "手持ちのアイテムから【暗闇刃】の力を解き放った。",
-  "chevvyenchants.command.blind.need_sword": "メインハンドに剣を構えよ。"
+  "chevvyenchants.command.blind.need_sword": "メインハンドに剣を構えよ。",
+  "enchantment.chevvyenchants.frostbite": "凍刃",
+  "chevvyenchants.frostbite": "凍刃",
+  "chevvyenchants.command.frostbite.added": "手持ちの剣に【凍刃】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.frostbite.cleared": "手持ちのアイテムから【凍刃】の力を解き放った。",
+  "chevvyenchants.command.frostbite.need_sword": "メインハンドに剣を構えよ。"
 }

@@ -28,7 +28,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"executioner",
 		"bleed",
 		"paralyze",
-		"blind"
+		"blind",
+		"frostbite"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -98,6 +99,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "blind":
 			if (add) { Blind.runAdd(sender); } else { Blind.runClear(sender); }
+			break;
+		case "frostbite":
+			if (add) { Frostbite.runAdd(sender); } else { Frostbite.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));

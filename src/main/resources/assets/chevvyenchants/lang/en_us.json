@@ -68,5 +68,10 @@
   "chevvyenchants.blind": "Blind",
   "chevvyenchants.command.blind.added": "Applied Blind to the held sword.",
   "chevvyenchants.command.blind.cleared": "Removed Blind from the held item.",
-  "chevvyenchants.command.blind.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.blind.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.frostbite": "Frostbite",
+  "chevvyenchants.frostbite": "Frostbite",
+  "chevvyenchants.command.frostbite.added": "Applied Frostbite to the held sword.",
+  "chevvyenchants.command.frostbite.cleared": "Removed Frostbite from the held item.",
+  "chevvyenchants.command.frostbite.need_sword": "Hold a sword in your main hand."
 }
