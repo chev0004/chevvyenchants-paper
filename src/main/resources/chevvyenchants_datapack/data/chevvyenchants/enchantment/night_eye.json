@@ -1,0 +1,33 @@
+{
+  "anvil_cost": 2,
+  "description": {
+    "translate": "enchantment.chevvyenchants.night_eye"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.0,
+          "per_level_above_first": 0.0
+        },
+        "attribute": "minecraft:attack_damage",
+        "id": "chevvyenchants:night_eye_registry_stub",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 41,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 10,
+    "per_level_above_first": 0
+  },
+  "exclusive_set": "#chevvyenchants:helmet_vision",
+  "slots": ["head"],
+  "supported_items": "#minecraft:enchantable/head_armor",
+  "weight": 4
+}

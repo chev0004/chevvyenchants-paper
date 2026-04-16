@@ -128,5 +128,10 @@
   "chevvyenchants.death.sonic_shot.2": "%1$s heard the last echo of %2$s's %3$s",
   "chevvyenchants.death.fart.0": "%1$s choked on the stench of %2$s",
   "chevvyenchants.death.fart.1": "%1$s suffocated in the miasma of %2$s",
-  "chevvyenchants.death.fart.2": "%1$s was blown away by %2$s's toxic cloud"
+  "chevvyenchants.death.fart.2": "%1$s was blown away by %2$s's toxic cloud",
+  "enchantment.chevvyenchants.night_eye": "Night Eye",
+  "chevvyenchants.night_eye": "Night Eye",
+  "chevvyenchants.command.night_eye.added": "Applied Night Eye to the held helmet.",
+  "chevvyenchants.command.night_eye.cleared": "Removed Night Eye from the held item.",
+  "chevvyenchants.command.night_eye.need_helmet": "Hold a helmet in your main hand."
 }

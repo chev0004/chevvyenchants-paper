@@ -128,5 +128,10 @@
   "chevvyenchants.death.sonic_shot.2": "%1$sは%2$sの%3$sの最後の残響を聞いた",
   "chevvyenchants.death.fart.0": "%1$sは%2$sの悪臭に窒息した",
   "chevvyenchants.death.fart.1": "%1$sは%2$sの瘴気に溺れた",
-  "chevvyenchants.death.fart.2": "%1$sは%2$sの毒気で吹き飛ばされた"
+  "chevvyenchants.death.fart.2": "%1$sは%2$sの毒気で吹き飛ばされた",
+  "enchantment.chevvyenchants.night_eye": "夜眼",
+  "chevvyenchants.night_eye": "夜眼",
+  "chevvyenchants.command.night_eye.added": "手持ちのヘルメットに【夜眼】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.night_eye.cleared": "手持ちのアイテムから【夜眼】の力を解き放った。",
+  "chevvyenchants.command.night_eye.need_helmet": "メインハンドにヘルメットを構えよ。"
 }
