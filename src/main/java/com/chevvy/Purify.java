@@ -82,6 +82,7 @@ public final class Purify {
 					player.removePotionEffect(type);
 				}
 			}
+			Frostbite.clearFrostbiteState(player);
 		}
 	}
 

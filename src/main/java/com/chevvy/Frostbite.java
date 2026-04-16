@@ -115,8 +115,8 @@ public final class Frostbite {
 				return;
 			}
 			int maxFreeze = target.getMaxFreezeTicks();
-			int freezeTicks = maxFreeze + (level * 40);
-			int slowTicks = 60 + 40 * level;
+			int freezeTicks = maxFreeze + (level * 20);
+			int slowTicks = 30 + 20 * level;
 			int expiresAt = Bukkit.getCurrentTick() + slowTicks;
 			long packed = ((long) freezeTicks << 32) | (expiresAt & 0xFFFFFFFFL);
 			target.setFreezeTicks(freezeTicks);
