@@ -115,7 +115,7 @@ public final class Fart {
 			if (!isInsideEffectiveZone(origin, backward, victim.getLocation())) {
 				continue;
 			}
-			victim.damage(DAMAGE, player);
+			victim.damage(DAMAGE);
 			victim.addPotionEffect(new PotionEffect(
 				PotionEffectType.POISON, POISON_DURATION_TICKS, POISON_AMPLIFIER, false, true, true
 			));
