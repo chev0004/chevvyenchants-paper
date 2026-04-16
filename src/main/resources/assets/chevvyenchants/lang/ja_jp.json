@@ -143,5 +143,10 @@
   "chevvyenchants.shuffle": "撹乱",
   "chevvyenchants.command.shuffle.added": "手持ちの剣に【撹乱】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.shuffle.cleared": "手持ちのアイテムから【撹乱】の力を解き放った。",
-  "chevvyenchants.command.shuffle.need_sword": "メインハンドに剣を構えよ。"
+  "chevvyenchants.command.shuffle.need_sword": "メインハンドに剣を構えよ。",
+  "enchantment.chevvyenchants.drain": "吸飢",
+  "chevvyenchants.drain": "吸飢",
+  "chevvyenchants.command.drain.added": "手持ちの剣に【吸飢】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.drain.cleared": "手持ちのアイテムから【吸飢】の力を解き放った。",
+  "chevvyenchants.command.drain.need_sword": "メインハンドに剣を構えよ。"
 }

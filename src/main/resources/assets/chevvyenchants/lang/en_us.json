@@ -143,5 +143,10 @@
   "chevvyenchants.shuffle": "Shuffle",
   "chevvyenchants.command.shuffle.added": "Applied Shuffle to the held sword.",
   "chevvyenchants.command.shuffle.cleared": "Removed Shuffle from the held item.",
-  "chevvyenchants.command.shuffle.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.shuffle.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.drain": "Drain",
+  "chevvyenchants.drain": "Drain",
+  "chevvyenchants.command.drain.added": "Applied Drain to the held sword.",
+  "chevvyenchants.command.drain.cleared": "Removed Drain from the held item.",
+  "chevvyenchants.command.drain.need_sword": "Hold a sword in your main hand."
 }

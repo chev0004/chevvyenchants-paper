@@ -28,5 +28,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey NIGHT_EYE = new NamespacedKey(ChevvyEnchants.MOD_ID, "night_eye");
 	public static final NamespacedKey GILLS = new NamespacedKey(ChevvyEnchants.MOD_ID, "gills");
 	public static final NamespacedKey SHUFFLE = new NamespacedKey(ChevvyEnchants.MOD_ID, "shuffle");
+	public static final NamespacedKey DRAIN = new NamespacedKey(ChevvyEnchants.MOD_ID, "drain");
 	private ChevvyEnchantKeys() {}
 }

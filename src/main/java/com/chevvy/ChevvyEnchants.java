@@ -40,6 +40,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		NightEye.register(this);
 		Gills.register(this);
 		Shuffle.register(this);
+		Drain.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }
