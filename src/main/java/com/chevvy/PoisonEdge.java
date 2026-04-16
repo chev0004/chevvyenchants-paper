@@ -54,6 +54,7 @@ public final class PoisonEdge {
 			}
 			int ticks = 60 + 40 * level;
 			target.addPotionEffect(new PotionEffect(PotionEffectType.POISON, ticks, level - 1, false, true, true));
+			ChevvyDeathMessages.track(target, player, "poison_edge", weapon);
 		}
 	}
 

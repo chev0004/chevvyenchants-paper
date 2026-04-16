@@ -130,6 +130,7 @@ public final class Bleed {
 			target.addPotionEffect(new PotionEffect(
 				PotionEffectType.WEAKNESS, duration * 20 + 10, 0, false, false, true
 			));
+			ChevvyDeathMessages.track(target, player, "bleed", weapon);
 		}
 	}
 

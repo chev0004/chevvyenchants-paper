@@ -54,6 +54,7 @@ public final class WitherTouch {
 			}
 			int ticks = 40 + 20 * level;
 			target.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, ticks, level - 1, false, true, true));
+			ChevvyDeathMessages.track(target, player, "wither_touch", weapon);
 		}
 	}
 

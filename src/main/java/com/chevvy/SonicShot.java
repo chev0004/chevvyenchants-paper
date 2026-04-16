@@ -76,11 +76,11 @@ public final class SonicShot {
 			}
 			COOLDOWNS.put(player.getUniqueId(), now);
 			event.setCancelled(true);
-			fireBeam(player);
+			fireBeam(player, bow);
 		}
 	}
 
-	private static void fireBeam(Player player) {
+	private static void fireBeam(Player player, ItemStack bow) {
 		World world = player.getWorld();
 		Location origin = player.getEyeLocation();
 		Vector direction = origin.getDirection().normalize();
@@ -123,6 +123,7 @@ public final class SonicShot {
 				.withCausingEntity(player)
 				.withDirectEntity(player)
 				.build();
+			ChevvyDeathMessages.track(victim, player, "sonic_shot", bow);
 			victim.damage(DAMAGE, source);
 			Vector push = direction.clone().multiply(KNOCKBACK_STRENGTH).setY(KNOCKBACK_LIFT);
 			victim.setVelocity(victim.getVelocity().add(push));

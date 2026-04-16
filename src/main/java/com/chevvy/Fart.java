@@ -81,11 +81,11 @@ public final class Fart {
 				return;
 			}
 			COOLDOWNS.put(player.getUniqueId(), now);
-			unleashFart(player);
+			unleashFart(player, legs);
 		}
 	}
 
-	private static void unleashFart(Player player) {
+	private static void unleashFart(Player player, ItemStack legs) {
 		World world = player.getWorld();
 		Location origin = player.getLocation();
 		Vector facing = origin.getDirection().setY(0).normalize();
@@ -115,6 +115,7 @@ public final class Fart {
 			if (!isInsideEffectiveZone(origin, backward, victim.getLocation())) {
 				continue;
 			}
+			ChevvyDeathMessages.track(victim, player, "fart", legs);
 			victim.damage(DAMAGE);
 			victim.addPotionEffect(new PotionEffect(
 				PotionEffectType.POISON, POISON_DURATION_TICKS, POISON_AMPLIFIER, false, true, true

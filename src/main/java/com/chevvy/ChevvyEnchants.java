@@ -11,6 +11,7 @@ public class ChevvyEnchants extends JavaPlugin {
 	@Override
 	public void onEnable() {
 		ChevvyEnchantCommands.register(this);
+		ChevvyDeathMessages.register(this);
 		ReflectDummy.register(this);
 		ChevvyCreativeItems.register();
 		ChevvyVillagerTrades.register(this);

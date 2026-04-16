@@ -123,6 +123,7 @@ public final class Frostbite {
 			target.setMetadata("chevvy_frostbite",
 				new org.bukkit.metadata.FixedMetadataValue(plugin, packed));
 			target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, slowTicks, level - 1, false, false, true));
+			ChevvyDeathMessages.track(target, player, "frostbite", weapon);
 		}
 	}
 
