@@ -99,9 +99,9 @@
   "chevvyenchants.command.purify.added": "Applied Purify to the held chestplate.",
   "chevvyenchants.command.purify.cleared": "Removed Purify from the held item.",
   "chevvyenchants.command.purify.need_chestplate": "Hold a chestplate in your main hand.",
-  "enchantment.chevvyenchants.fart": "Fart",
-  "chevvyenchants.fart": "Fart",
-  "chevvyenchants.command.fart.added": "Applied Fart to the held leggings.",
-  "chevvyenchants.command.fart.cleared": "Removed Fart from the held item.",
+  "enchantment.chevvyenchants.fart": "Borborygmus",
+  "chevvyenchants.fart": "Borborygmus",
+  "chevvyenchants.command.fart.added": "Applied Borborygmus to the held leggings.",
+  "chevvyenchants.command.fart.cleared": "Removed Borborygmus from the held item.",
   "chevvyenchants.command.fart.need_leggings": "Hold leggings in your main hand."
 }
