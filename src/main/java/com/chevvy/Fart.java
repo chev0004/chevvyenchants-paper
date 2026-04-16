@@ -6,11 +6,13 @@ import java.util.UUID;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.Tag;
 import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -22,6 +24,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerToggleSneakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -36,6 +40,8 @@ public final class Fart {
 	private static final double DAMAGE = 5.0;
 	private static final double KNOCKBACK_STRENGTH = 1.1;
 	private static final double KNOCKBACK_LIFT = 0.35;
+	private static final int POISON_DURATION_TICKS = 80;
+	private static final int POISON_AMPLIFIER = 0;
 
 	private static final Particle.DustOptions FART_DUST =
 		new Particle.DustOptions(Color.fromRGB(154, 132, 46), 1.6f);
@@ -106,19 +112,81 @@ public final class Fart {
 			if (victim.equals(player)) {
 				continue;
 			}
-			Vector toVictim = victim.getLocation().toVector().subtract(origin.toVector());
-			toVictim.setY(0);
-			if (toVictim.lengthSquared() < 1.0E-4) {
-				continue;
-			}
-			Vector toVictimDir = toVictim.clone().normalize();
-			if (toVictimDir.dot(backward) < CONE_DOT) {
+			if (!isInsideEffectiveZone(origin, backward, victim.getLocation())) {
 				continue;
 			}
 			victim.damage(DAMAGE, player);
+			victim.addPotionEffect(new PotionEffect(
+				PotionEffectType.POISON, POISON_DURATION_TICKS, POISON_AMPLIFIER, false, true, true
+			));
 			Vector push = backward.clone().multiply(KNOCKBACK_STRENGTH).setY(KNOCKBACK_LIFT);
 			victim.setVelocity(victim.getVelocity().add(push));
 		}
+		int blockRadius = (int) Math.ceil(RADIUS);
+		int baseX = origin.getBlockX();
+		int baseY = origin.getBlockY();
+		int baseZ = origin.getBlockZ();
+		for (int x = baseX - blockRadius; x <= baseX + blockRadius; x++) {
+			for (int y = baseY - 1; y <= baseY + 2; y++) {
+				for (int z = baseZ - blockRadius; z <= baseZ + blockRadius; z++) {
+					Block block = world.getBlockAt(x, y, z);
+					if (!isPlantLike(block.getType())) {
+						continue;
+					}
+					if (!isInsideEffectiveZone(origin, backward, block.getLocation().add(0.5, 0.5, 0.5))) {
+						continue;
+					}
+					block.setType(Material.AIR, false);
+				}
+			}
+		}
+	}
+
+	private static boolean isInsideEffectiveZone(Location origin, Vector backward, Location target) {
+		Vector toTarget = target.toVector().subtract(origin.toVector());
+		if (toTarget.lengthSquared() > RADIUS * RADIUS) {
+			return false;
+		}
+		toTarget.setY(0);
+		if (toTarget.lengthSquared() < 1.0E-4) {
+			return false;
+		}
+		Vector toTargetDir = toTarget.normalize();
+		return toTargetDir.dot(backward) >= CONE_DOT;
+	}
+
+	private static boolean isPlantLike(Material type) {
+		return Tag.SAPLINGS.isTagged(type)
+			|| Tag.SMALL_FLOWERS.isTagged(type)
+			|| Tag.FLOWERS.isTagged(type)
+			|| Tag.CROPS.isTagged(type)
+			|| Tag.LEAVES.isTagged(type)
+			|| type == Material.SHORT_GRASS
+			|| type == Material.TALL_GRASS
+			|| type == Material.FERN
+			|| type == Material.LARGE_FERN
+			|| type == Material.SWEET_BERRY_BUSH
+			|| type == Material.NETHER_WART
+			|| type == Material.COCOA
+			|| type == Material.SUGAR_CANE
+			|| type == Material.BAMBOO
+			|| type == Material.CACTUS
+			|| type == Material.VINE
+			|| type == Material.CAVE_VINES
+			|| type == Material.CAVE_VINES_PLANT
+			|| type == Material.TWISTING_VINES
+			|| type == Material.TWISTING_VINES_PLANT
+			|| type == Material.WEEPING_VINES
+			|| type == Material.WEEPING_VINES_PLANT
+			|| type == Material.KELP
+			|| type == Material.KELP_PLANT
+			|| type == Material.SEAGRASS
+			|| type == Material.TALL_SEAGRASS
+			|| type == Material.LILY_PAD
+			|| type == Material.TORCHFLOWER_CROP
+			|| type == Material.PITCHER_CROP
+			|| type == Material.PITCHER_PLANT
+			|| type == Material.MANGROVE_PROPAGULE;
 	}
 
 	public static void applyEnchantToStack(ItemStack stack, World world) {
