@@ -1,0 +1,32 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.chevvyenchants.sonic_shot"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.0,
+          "per_level_above_first": 0.0
+        },
+        "attribute": "minecraft:attack_damage",
+        "id": "chevvyenchants:sonic_shot_registry_stub",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 51,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 20,
+    "per_level_above_first": 0
+  },
+  "slots": ["mainhand"],
+  "supported_items": "#minecraft:enchantable/bow",
+  "weight": 2
+}

@@ -24,5 +24,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey SOULBOUND = new NamespacedKey(ChevvyEnchants.MOD_ID, "soulbound");
 	public static final NamespacedKey PURIFY = new NamespacedKey(ChevvyEnchants.MOD_ID, "purify");
 	public static final NamespacedKey FART = new NamespacedKey(ChevvyEnchants.MOD_ID, "fart");
+	public static final NamespacedKey SONIC_SHOT = new NamespacedKey(ChevvyEnchants.MOD_ID, "sonic_shot");
 	private ChevvyEnchantKeys() {}
 }

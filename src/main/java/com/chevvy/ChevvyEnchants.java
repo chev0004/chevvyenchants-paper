@@ -35,6 +35,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Soulbound.register(this);
 		Purify.register(this);
 		Fart.register(this);
+		SonicShot.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

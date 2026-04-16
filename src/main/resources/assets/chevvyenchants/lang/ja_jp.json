@@ -103,5 +103,10 @@
   "chevvyenchants.fart": "屁嵐",
   "chevvyenchants.command.fart.added": "手持ちのレギンスに【屁嵐】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.fart.cleared": "手持ちのアイテムから【屁嵐】の力を解き放った。",
-  "chevvyenchants.command.fart.need_leggings": "メインハンドにレギンスを構えよ。"
+  "chevvyenchants.command.fart.need_leggings": "メインハンドにレギンスを構えよ。",
+  "enchantment.chevvyenchants.sonic_shot": "音響砲",
+  "chevvyenchants.sonic_shot": "音響砲",
+  "chevvyenchants.command.sonic_shot.added": "手持ちの弓に【音響砲】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.sonic_shot.cleared": "手持ちのアイテムから【音響砲】の力を解き放った。",
+  "chevvyenchants.command.sonic_shot.need_bow": "メインハンドに弓を構えよ。"
 }

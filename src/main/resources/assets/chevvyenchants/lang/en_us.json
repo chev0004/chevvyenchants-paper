@@ -103,5 +103,10 @@
   "chevvyenchants.fart": "Borborygmus",
   "chevvyenchants.command.fart.added": "Applied Borborygmus to the held leggings.",
   "chevvyenchants.command.fart.cleared": "Removed Borborygmus from the held item.",
-  "chevvyenchants.command.fart.need_leggings": "Hold leggings in your main hand."
+  "chevvyenchants.command.fart.need_leggings": "Hold leggings in your main hand.",
+  "enchantment.chevvyenchants.sonic_shot": "Sonic Shot",
+  "chevvyenchants.sonic_shot": "Sonic Shot",
+  "chevvyenchants.command.sonic_shot.added": "Applied Sonic Shot to the held bow.",
+  "chevvyenchants.command.sonic_shot.cleared": "Removed Sonic Shot from the held item.",
+  "chevvyenchants.command.sonic_shot.need_bow": "Hold a bow in your main hand."
 }

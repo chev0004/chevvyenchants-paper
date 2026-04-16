@@ -35,7 +35,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"autoreplant",
 		"soulbound",
 		"purify",
-		"fart"
+		"fart",
+		"sonicshot"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -126,6 +127,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "fart":
 			if (add) { Fart.runAdd(sender); } else { Fart.runClear(sender); }
+			break;
+		case "sonicshot":
+			if (add) { SonicShot.runAdd(sender); } else { SonicShot.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
