@@ -38,6 +38,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Fart.register(this);
 		SonicShot.register(this);
 		NightEye.register(this);
+		Gills.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

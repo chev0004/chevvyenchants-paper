@@ -37,7 +37,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"purify",
 		"fart",
 		"sonicshot",
-		"nighteye"
+		"nighteye",
+		"gills"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -134,6 +135,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "nighteye":
 			if (add) { NightEye.runAdd(sender); } else { NightEye.runClear(sender); }
+			break;
+		case "gills":
+			if (add) { Gills.runAdd(sender); } else { Gills.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));

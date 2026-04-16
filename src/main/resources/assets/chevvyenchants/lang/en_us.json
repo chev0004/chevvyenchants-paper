@@ -133,5 +133,10 @@
   "chevvyenchants.night_eye": "Night Eye",
   "chevvyenchants.command.night_eye.added": "Applied Night Eye to the held helmet.",
   "chevvyenchants.command.night_eye.cleared": "Removed Night Eye from the held item.",
-  "chevvyenchants.command.night_eye.need_helmet": "Hold a helmet in your main hand."
+  "chevvyenchants.command.night_eye.need_helmet": "Hold a helmet in your main hand.",
+  "enchantment.chevvyenchants.gills": "Gills",
+  "chevvyenchants.gills": "Gills",
+  "chevvyenchants.command.gills.added": "Applied Gills to the held helmet.",
+  "chevvyenchants.command.gills.cleared": "Removed Gills from the held item.",
+  "chevvyenchants.command.gills.need_helmet": "Hold a helmet in your main hand."
 }

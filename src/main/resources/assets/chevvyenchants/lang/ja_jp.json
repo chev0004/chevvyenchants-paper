@@ -133,5 +133,10 @@
   "chevvyenchants.night_eye": "夜眼",
   "chevvyenchants.command.night_eye.added": "手持ちのヘルメットに【夜眼】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.night_eye.cleared": "手持ちのアイテムから【夜眼】の力を解き放った。",
-  "chevvyenchants.command.night_eye.need_helmet": "メインハンドにヘルメットを構えよ。"
+  "chevvyenchants.command.night_eye.need_helmet": "メインハンドにヘルメットを構えよ。",
+  "enchantment.chevvyenchants.gills": "鰓呼吸",
+  "chevvyenchants.gills": "鰓呼吸",
+  "chevvyenchants.command.gills.added": "手持ちのヘルメットに【鰓呼吸】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.gills.cleared": "手持ちのアイテムから【鰓呼吸】の力を解き放った。",
+  "chevvyenchants.command.gills.need_helmet": "メインハンドにヘルメットを構えよ。"
 }
