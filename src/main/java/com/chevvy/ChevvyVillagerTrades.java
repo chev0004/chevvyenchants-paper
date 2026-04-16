@@ -12,7 +12,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Villager;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.VillagerCareerChangeEvent;
+import org.bukkit.event.entity.VillagerAcquireTradeEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -71,9 +71,9 @@ final class ChevvyVillagerTrades {
 			}
 
 			@EventHandler
-			public void onVillagerLevelUp(VillagerCareerChangeEvent event) {
-				if (event.getReason() == VillagerCareerChangeEvent.ChangeReason.LEVEL_UP) {
-					maybeInject(event.getEntity());
+			public void onVillagerAcquireTrade(VillagerAcquireTradeEvent event) {
+				if (event.getEntity() instanceof Villager villager) {
+					maybeInject(villager);
 				}
 			}
 		}, plugin);
