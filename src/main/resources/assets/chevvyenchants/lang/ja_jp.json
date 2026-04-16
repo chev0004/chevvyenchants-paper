@@ -138,5 +138,10 @@
   "chevvyenchants.gills": "鰓呼吸",
   "chevvyenchants.command.gills.added": "手持ちのヘルメットに【鰓呼吸】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.gills.cleared": "手持ちのアイテムから【鰓呼吸】の力を解き放った。",
-  "chevvyenchants.command.gills.need_helmet": "メインハンドにヘルメットを構えよ。"
+  "chevvyenchants.command.gills.need_helmet": "メインハンドにヘルメットを構えよ。",
+  "enchantment.chevvyenchants.shuffle": "撹乱",
+  "chevvyenchants.shuffle": "撹乱",
+  "chevvyenchants.command.shuffle.added": "手持ちの剣に【撹乱】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.shuffle.cleared": "手持ちのアイテムから【撹乱】の力を解き放った。",
+  "chevvyenchants.command.shuffle.need_sword": "メインハンドに剣を構えよ。"
 }

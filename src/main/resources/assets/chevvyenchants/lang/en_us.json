@@ -138,5 +138,10 @@
   "chevvyenchants.gills": "Gills",
   "chevvyenchants.command.gills.added": "Applied Gills to the held helmet.",
   "chevvyenchants.command.gills.cleared": "Removed Gills from the held item.",
-  "chevvyenchants.command.gills.need_helmet": "Hold a helmet in your main hand."
+  "chevvyenchants.command.gills.need_helmet": "Hold a helmet in your main hand.",
+  "enchantment.chevvyenchants.shuffle": "Shuffle",
+  "chevvyenchants.shuffle": "Shuffle",
+  "chevvyenchants.command.shuffle.added": "Applied Shuffle to the held sword.",
+  "chevvyenchants.command.shuffle.cleared": "Removed Shuffle from the held item.",
+  "chevvyenchants.command.shuffle.need_sword": "Hold a sword in your main hand."
 }
