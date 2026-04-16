@@ -20,6 +20,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
+import org.bukkit.entity.Zombie;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -141,7 +142,7 @@ public final class ReflectDummy {
 				return;
 			}
 			if (args.length < 1) {
-				sender.sendMessage(Component.text("Usage: /chevvyreflect <spawn|clear>", NamedTextColor.YELLOW));
+				sender.sendMessage(Component.text("Usage: /chevvyreflect <spawn|spawnzombie|clear>", NamedTextColor.YELLOW));
 				return;
 			}
 			String sub = args[0].toLowerCase(Locale.ROOT);
@@ -170,6 +171,25 @@ public final class ReflectDummy {
 				player.sendMessage(Component.text("Spawned reflect dummy.", NamedTextColor.GREEN));
 				return;
 			}
+			if (sub.equals("spawnzombie")) {
+				if (!(sender instanceof Player player)) {
+					sender.sendMessage(Component.text("Only players can spawn a zombie.", NamedTextColor.RED));
+					return;
+				}
+				Location loc = player.getLocation();
+				loc.getWorld().spawn(loc, Zombie.class, zombie -> {
+					zombie.setRemoveWhenFarAway(false);
+					zombie.setPersistent(true);
+					zombie.customName(Component.text("1000 HP zombie"));
+					zombie.setCustomNameVisible(true);
+					if (zombie.getAttribute(Attribute.MAX_HEALTH) != null) {
+						zombie.getAttribute(Attribute.MAX_HEALTH).setBaseValue(1000);
+					}
+					zombie.setHealth(zombie.getMaxHealth());
+				});
+				player.sendMessage(Component.text("Spawned 1000 HP zombie.", NamedTextColor.GREEN));
+				return;
+			}
 			if (sub.equals("clear")) {
 				int n = 0;
 				for (World world : Bukkit.getWorlds()) {
@@ -183,7 +203,7 @@ public final class ReflectDummy {
 				sender.sendMessage(Component.text("Removed " + n + " reflect dummy(s).", NamedTextColor.GREEN));
 				return;
 			}
-			sender.sendMessage(Component.text("Usage: /chevvyreflect <spawn|clear>", NamedTextColor.RED));
+			sender.sendMessage(Component.text("Usage: /chevvyreflect <spawn|spawnzombie|clear>", NamedTextColor.RED));
 		}
 
 		@Override
@@ -193,7 +213,7 @@ public final class ReflectDummy {
 			}
 			if (args.length <= 1) {
 				String prefix = args.length == 0 ? "" : args[0].toLowerCase(Locale.ROOT);
-				return Stream.of("spawn", "clear")
+				return Stream.of("spawn", "spawnzombie", "clear")
 					.filter(s -> prefix.isEmpty() || s.startsWith(prefix))
 					.toList();
 			}
