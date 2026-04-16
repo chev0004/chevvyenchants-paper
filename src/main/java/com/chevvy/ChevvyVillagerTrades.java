@@ -51,7 +51,8 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.SUSTENANCE, 18),
 		new EnchantOffer(ChevvyEnchantKeys.WINDWALKER, 22),
 		new EnchantOffer(ChevvyEnchantKeys.LAST_STAND, 30),
-		new EnchantOffer(ChevvyEnchantKeys.PURIFY, 26)
+		new EnchantOffer(ChevvyEnchantKeys.PURIFY, 26),
+		new EnchantOffer(ChevvyEnchantKeys.FART, 40)
 	);
 
 	private static final List<EnchantOffer> LIBRARIAN_POOL = List.of(
@@ -195,6 +196,8 @@ final class ChevvyVillagerTrades {
 			Soulbound.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.PURIFY)) {
 			Purify.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.FART)) {
+			Fart.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);

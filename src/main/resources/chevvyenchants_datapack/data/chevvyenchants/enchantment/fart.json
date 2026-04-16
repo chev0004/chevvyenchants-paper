@@ -1,0 +1,32 @@
+{
+  "anvil_cost": 4,
+  "description": {
+    "translate": "enchantment.chevvyenchants.fart"
+  },
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.0,
+          "per_level_above_first": 0.0
+        },
+        "attribute": "minecraft:movement_speed",
+        "id": "chevvyenchants:fart_registry_stub",
+        "operation": "add_value"
+      }
+    ]
+  },
+  "max_cost": {
+    "base": 55,
+    "per_level_above_first": 0
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 25,
+    "per_level_above_first": 0
+  },
+  "slots": ["legs"],
+  "supported_items": "#minecraft:enchantable/leg_armor",
+  "weight": 1
+}
