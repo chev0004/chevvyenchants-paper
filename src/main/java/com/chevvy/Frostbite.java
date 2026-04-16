@@ -115,14 +115,15 @@ public final class Frostbite {
 				return;
 			}
 			int maxFreeze = target.getMaxFreezeTicks();
-			int freezeTicks = maxFreeze + (level * 20);
-			int slowTicks = 30 + 20 * level;
+			int freezeTicks = maxFreeze + (level * 8);
+			int slowTicks = 30 + 8 * level;
 			int expiresAt = Bukkit.getCurrentTick() + slowTicks;
 			long packed = ((long) freezeTicks << 32) | (expiresAt & 0xFFFFFFFFL);
 			target.setFreezeTicks(freezeTicks);
 			target.setMetadata("chevvy_frostbite",
 				new org.bukkit.metadata.FixedMetadataValue(plugin, packed));
-			target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, slowTicks, level - 1, false, false, true));
+			int amplifier = level >= 5 ? 1 : 0;
+			target.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, slowTicks, amplifier, false, false, true));
 			ChevvyDeathMessages.track(target, player, "frostbite", weapon);
 		}
 	}

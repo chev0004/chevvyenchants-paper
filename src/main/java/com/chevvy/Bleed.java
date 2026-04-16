@@ -52,15 +52,17 @@ public final class Bleed {
 	private static int maxStacksForLevel(int level) {
 		return switch (level) {
 			case 1 -> 3;
-			case 2 -> 5;
+			case 2 -> 4;
+			case 3 -> 5;
+			case 4 -> 6;
 			default -> 7;
 		};
 	}
 
 	private static int durationForLevel(int level) {
 		return switch (level) {
-			case 1 -> 3;
-			case 2 -> 4;
+			case 1, 2 -> 3;
+			case 3, 4 -> 4;
 			default -> 5;
 		};
 	}
