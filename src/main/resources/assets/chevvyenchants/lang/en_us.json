@@ -148,5 +148,10 @@
   "chevvyenchants.drain": "Drain",
   "chevvyenchants.command.drain.added": "Applied Drain to the held sword.",
   "chevvyenchants.command.drain.cleared": "Removed Drain from the held item.",
-  "chevvyenchants.command.drain.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.drain.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.sunder": "Sunder",
+  "chevvyenchants.sunder": "Sunder",
+  "chevvyenchants.command.sunder.added": "Applied Sunder to the held sword.",
+  "chevvyenchants.command.sunder.cleared": "Removed Sunder from the held item.",
+  "chevvyenchants.command.sunder.need_sword": "Hold a sword in your main hand."
 }
