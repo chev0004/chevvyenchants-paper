@@ -20,49 +20,53 @@ public final class Windwalker {
 	private Windwalker() {}
 
 	public static void register(JavaPlugin plugin) {
-		Bukkit.getScheduler().runTaskTimer(plugin, Windwalker::tickAllWorlds, 0L, 20L);
+		Bukkit.getScheduler().runTaskTimer(plugin, Windwalker::tickAllWorlds, 0L, 1L);
 	}
 
 	private static void tickAllWorlds() {
-		for (World world : Bukkit.getWorlds()) {
+		for (var world : Bukkit.getWorlds()) {
 			for (Player player : world.getPlayers()) {
 				ItemStack boots = player.getInventory().getBoots();
-				if (boots == null || boots.getType().isAir()) {
-					removeSpeedIfOurs(player);
-					continue;
-				}
-				Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
-				if (en == null) {
-					continue;
-				}
-				int level = ChevvyItemUtil.getEnchantLevel(boots, en);
-				if (level <= 0) {
-					if (ChevvyItemUtil.hasEnchantOrLegacyNbt(boots, en, NBT_KEY)) {
-						level = 1;
-					} else {
-						removeSpeedIfOurs(player);
+				if (isOnStack(boots, world)) {
+					Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
+					if (en == null) {
 						continue;
 					}
+					int level = ChevvyItemUtil.getEnchantLevel(boots, en);
+					if (level <= 0) {
+						level = 1;
+					}
+					int amp = Math.max(0, level - 1);
+					player.addPotionEffect(
+						new PotionEffect(
+							PotionEffectType.SPEED,
+							PotionEffect.INFINITE_DURATION,
+							amp,
+							false,
+							false,
+							false
+						)
+					);
+				} else {
+					PotionEffect existing = player.getPotionEffect(PotionEffectType.SPEED);
+					if (existing != null && isOurSpeed(existing)) {
+						player.removePotionEffect(PotionEffectType.SPEED);
+					}
 				}
-				player.addPotionEffect(
-					new PotionEffect(
-						PotionEffectType.SPEED,
-						40,
-						level - 1,
-						false,
-						false,
-						true
-					)
-				);
 			}
 		}
 	}
 
-	private static void removeSpeedIfOurs(Player player) {
-		PotionEffect existing = player.getPotionEffect(PotionEffectType.SPEED);
-		if (existing != null && !existing.isAmbient() && !existing.hasParticles() && existing.getDuration() <= 40) {
-			player.removePotionEffect(PotionEffectType.SPEED);
+	private static boolean isOurSpeed(PotionEffect existing) {
+		if (existing.getDuration() != PotionEffect.INFINITE_DURATION
+			|| existing.isAmbient()
+			|| existing.hasParticles()) {
+			return false;
 		}
+		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
+		int maxAmp = en != null ? Math.max(0, en.getMaxLevel() - 1) : 2;
+		int amp = existing.getAmplifier();
+		return amp >= 0 && amp <= maxAmp;
 	}
 
 	public static void applyEnchantToStack(ItemStack stack, World world) {
@@ -101,5 +105,13 @@ public final class Windwalker {
 		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
 		ChevvyItemUtil.removeEnchant(stack, en, NBT_KEY, LORE_KEY);
 		sender.sendMessage(Component.translatable("chevvyenchants.command.windwalker.cleared"));
+	}
+
+	private static boolean isOnStack(ItemStack stack, World world) {
+		if (stack == null || stack.getType().isAir()) {
+			return false;
+		}
+		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
+		return ChevvyItemUtil.hasEnchantOrLegacyNbt(stack, en, NBT_KEY);
 	}
 }
