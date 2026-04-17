@@ -20,26 +20,34 @@ public final class NightEye {
 	private NightEye() {}
 
 	public static void register(JavaPlugin plugin) {
-		Bukkit.getScheduler().runTaskTimer(plugin, NightEye::tickAllWorlds, 0L, 40L);
+		Bukkit.getScheduler().runTaskTimer(plugin, NightEye::tickAllWorlds, 0L, 1L);
 	}
 
 	private static void tickAllWorlds() {
-		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.NIGHT_EYE);
-		if (en == null) {
-			return;
-		}
-		for (World world : Bukkit.getWorlds()) {
+		for (var world : Bukkit.getWorlds()) {
 			for (Player player : world.getPlayers()) {
 				ItemStack helmet = player.getInventory().getHelmet();
-				if (helmet == null || helmet.getType().isAir()) {
-					continue;
+				if (isOnStack(helmet, world)) {
+					player.addPotionEffect(
+						new PotionEffect(
+							PotionEffectType.NIGHT_VISION,
+							PotionEffect.INFINITE_DURATION,
+							0,
+							false,
+							false,
+							false
+						)
+					);
+				} else {
+					PotionEffect existing = player.getPotionEffect(PotionEffectType.NIGHT_VISION);
+					if (existing != null
+						&& existing.getDuration() == PotionEffect.INFINITE_DURATION
+						&& existing.getAmplifier() == 0
+						&& !existing.isAmbient()
+						&& !existing.hasParticles()) {
+						player.removePotionEffect(PotionEffectType.NIGHT_VISION);
+					}
 				}
-				if (ChevvyItemUtil.getEnchantLevel(helmet, en) <= 0) {
-					continue;
-				}
-				player.addPotionEffect(new PotionEffect(
-					PotionEffectType.NIGHT_VISION, 300, 0, true, false, true
-				));
 			}
 		}
 	}
@@ -80,5 +88,13 @@ public final class NightEye {
 		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.NIGHT_EYE);
 		ChevvyItemUtil.removeEnchant(stack, en, NBT_KEY, LORE_KEY);
 		sender.sendMessage(Component.translatable("chevvyenchants.command.night_eye.cleared"));
+	}
+
+	private static boolean isOnStack(ItemStack stack, World world) {
+		if (stack == null || stack.getType().isAir()) {
+			return false;
+		}
+		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.NIGHT_EYE);
+		return ChevvyItemUtil.hasEnchantOrLegacyNbt(stack, en, NBT_KEY);
 	}
 }
