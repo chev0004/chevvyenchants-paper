@@ -24,6 +24,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -76,17 +78,19 @@ public final class SonicShot {
 			}
 			COOLDOWNS.put(player.getUniqueId(), now);
 			event.setCancelled(true);
-			fireBeam(player, bow);
+			int level = ChevvyItemUtil.getEnchantLevel(bow, en);
+			fireBeam(player, bow, level);
 		}
 	}
 
-	private static void fireBeam(Player player, ItemStack bow) {
+	private static void fireBeam(Player player, ItemStack bow, int level) {
 		World world = player.getWorld();
 		Location origin = player.getEyeLocation();
 		Vector direction = origin.getDirection().normalize();
 
 		world.playSound(origin, Sound.ENTITY_WARDEN_SONIC_BOOM, SoundCategory.PLAYERS, 1.4f, 1.0f);
 		world.playSound(origin, Sound.ENTITY_WARDEN_SONIC_CHARGE, SoundCategory.PLAYERS, 1.0f, 1.2f);
+		player.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 6 * 20, 0, false, false, false));
 
 		for (int i = 1; i <= BEAM_STEPS; i++) {
 			double t = (double) i * (BEAM_RANGE / BEAM_STEPS);
@@ -125,6 +129,9 @@ public final class SonicShot {
 				.build();
 			ChevvyDeathMessages.track(victim, player, "sonic_shot", bow);
 			victim.damage(DAMAGE, source);
+			if (level >= 2) {
+				victim.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 20, 0, false, false, false));
+			}
 			Vector push = direction.clone().multiply(KNOCKBACK_STRENGTH).setY(KNOCKBACK_LIFT);
 			victim.setVelocity(victim.getVelocity().add(push));
 		}
