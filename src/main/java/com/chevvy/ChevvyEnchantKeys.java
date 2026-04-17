@@ -29,5 +29,6 @@ public final class ChevvyEnchantKeys {
 	public static final NamespacedKey GILLS = new NamespacedKey(ChevvyEnchants.MOD_ID, "gills");
 	public static final NamespacedKey SHUFFLE = new NamespacedKey(ChevvyEnchants.MOD_ID, "shuffle");
 	public static final NamespacedKey DRAIN = new NamespacedKey(ChevvyEnchants.MOD_ID, "drain");
+	public static final NamespacedKey SUNDER = new NamespacedKey(ChevvyEnchants.MOD_ID, "sunder");
 	private ChevvyEnchantKeys() {}
 }

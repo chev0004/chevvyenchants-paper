@@ -40,7 +40,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"nighteye",
 		"gills",
 		"shuffle",
-		"drain"
+		"drain",
+		"sunder"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -146,6 +147,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "drain":
 			if (add) { Drain.runAdd(sender); } else { Drain.runClear(sender); }
+			break;
+		case "sunder":
+			if (add) { Sunder.runAdd(sender); } else { Sunder.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
