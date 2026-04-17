@@ -42,6 +42,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Shuffle.register(this);
 		Drain.register(this);
 		Sunder.register(this);
+		Deflect.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }

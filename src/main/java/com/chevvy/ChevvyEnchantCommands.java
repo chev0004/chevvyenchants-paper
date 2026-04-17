@@ -41,7 +41,8 @@ final class ChevvyEnchantCommands implements BasicCommand {
 		"gills",
 		"shuffle",
 		"drain",
-		"sunder"
+		"sunder",
+		"deflect"
 	);
 
 	private ChevvyEnchantCommands() {}
@@ -150,6 +151,9 @@ final class ChevvyEnchantCommands implements BasicCommand {
 			break;
 		case "sunder":
 			if (add) { Sunder.runAdd(sender); } else { Sunder.runClear(sender); }
+			break;
+		case "deflect":
+			if (add) { Deflect.runAdd(sender); } else { Deflect.runClear(sender); }
 			break;
 		default:
 			sender.sendMessage(Component.text("Unknown enchantment. Use: " + String.join(", ", ENCHANT_NAMES), NamedTextColor.RED));
