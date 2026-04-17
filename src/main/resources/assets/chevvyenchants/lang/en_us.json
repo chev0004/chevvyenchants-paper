@@ -153,5 +153,10 @@
   "chevvyenchants.sunder": "Sunder",
   "chevvyenchants.command.sunder.added": "Applied Sunder to the held sword.",
   "chevvyenchants.command.sunder.cleared": "Removed Sunder from the held item.",
-  "chevvyenchants.command.sunder.need_sword": "Hold a sword in your main hand."
+  "chevvyenchants.command.sunder.need_sword": "Hold a sword in your main hand.",
+  "enchantment.chevvyenchants.deflect": "Deflect",
+  "chevvyenchants.deflect": "Deflect",
+  "chevvyenchants.command.deflect.added": "Applied Deflect to the held armor.",
+  "chevvyenchants.command.deflect.cleared": "Removed Deflect from the held item.",
+  "chevvyenchants.command.deflect.need_armor": "Hold armor in your main hand."
 }
