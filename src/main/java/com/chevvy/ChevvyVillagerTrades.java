@@ -42,7 +42,10 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.BLEED, 24),
 		new EnchantOffer(ChevvyEnchantKeys.PARALYZE, 26),
 		new EnchantOffer(ChevvyEnchantKeys.BLIND, 24),
-		new EnchantOffer(ChevvyEnchantKeys.FROSTBITE, 28)
+		new EnchantOffer(ChevvyEnchantKeys.FROSTBITE, 28),
+		new EnchantOffer(ChevvyEnchantKeys.SHUFFLE, 22),
+		new EnchantOffer(ChevvyEnchantKeys.DRAIN, 24),
+		new EnchantOffer(ChevvyEnchantKeys.SUNDER, 26)
 	);
 
 	private static final List<EnchantOffer> FLETCHER_POOL = List.of(
@@ -56,11 +59,14 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.WINDWALKER, 22),
 		new EnchantOffer(ChevvyEnchantKeys.LAST_STAND, 30),
 		new EnchantOffer(ChevvyEnchantKeys.PURIFY, 26),
-		new EnchantOffer(ChevvyEnchantKeys.FART, 40)
+		new EnchantOffer(ChevvyEnchantKeys.FART, 40),
+		new EnchantOffer(ChevvyEnchantKeys.NIGHT_EYE, 20),
+		new EnchantOffer(ChevvyEnchantKeys.GILLS, 20),
+		new EnchantOffer(ChevvyEnchantKeys.DEFLECT, 30)
 	);
 
 	private static final List<EnchantOffer> LIBRARIAN_POOL = List.of(
-		new EnchantOffer(ChevvyEnchantKeys.SOULBOUND, 38)
+		new EnchantOffer(ChevvyEnchantKeys.SOULBOUND, 48)
 	);
 
 	private ChevvyVillagerTrades() {}
@@ -207,6 +213,18 @@ final class ChevvyVillagerTrades {
 			Fart.applyEnchantToStack(book, villager.getWorld());
 		} else if (k.equals(ChevvyEnchantKeys.SONIC_SHOT)) {
 			SonicShot.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.SHUFFLE)) {
+			Shuffle.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.DRAIN)) {
+			Drain.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.SUNDER)) {
+			Sunder.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.NIGHT_EYE)) {
+			NightEye.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.GILLS)) {
+			Gills.applyEnchantToStack(book, villager.getWorld());
+		} else if (k.equals(ChevvyEnchantKeys.DEFLECT)) {
+			Deflect.applyEnchantToStack(book, villager.getWorld());
 		}
 		int price = Math.max(1, basePrice + priceJitter);
 		MerchantRecipe offer = new MerchantRecipe(book, MAX_USES);
