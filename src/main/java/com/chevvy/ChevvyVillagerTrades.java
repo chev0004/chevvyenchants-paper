@@ -42,7 +42,10 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.BLEED, 24),
 		new EnchantOffer(ChevvyEnchantKeys.PARALYZE, 26),
 		new EnchantOffer(ChevvyEnchantKeys.BLIND, 24),
-		new EnchantOffer(ChevvyEnchantKeys.FROSTBITE, 28),
+		new EnchantOffer(ChevvyEnchantKeys.FROSTBITE, 28)
+	);
+
+	private static final List<EnchantOffer> FLETCHER_POOL = List.of(
 		new EnchantOffer(ChevvyEnchantKeys.SONIC_SHOT, 40)
 	);
 
@@ -117,6 +120,9 @@ final class ChevvyVillagerTrades {
 		}
 		if (profession == Villager.Profession.WEAPONSMITH) {
 			return WEAPONSMITH_POOL;
+		}
+		if (profession == Villager.Profession.FLETCHER) {
+			return FLETCHER_POOL;
 		}
 		if (profession == Villager.Profession.ARMORER) {
 			return ARMORER_POOL;
