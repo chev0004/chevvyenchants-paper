@@ -148,5 +148,10 @@
   "chevvyenchants.drain": "吸飢",
   "chevvyenchants.command.drain.added": "手持ちの剣に【吸飢】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.drain.cleared": "手持ちのアイテムから【吸飢】の力を解き放った。",
-  "chevvyenchants.command.drain.need_sword": "メインハンドに剣を構えよ。"
+  "chevvyenchants.command.drain.need_sword": "メインハンドに剣を構えよ。",
+  "enchantment.chevvyenchants.sunder": "破砕",
+  "chevvyenchants.sunder": "破砕",
+  "chevvyenchants.command.sunder.added": "手持ちの剣に【破砕】のエンチャントを刻み込んだ。",
+  "chevvyenchants.command.sunder.cleared": "手持ちのアイテムから【破砕】の力を解き放った。",
+  "chevvyenchants.command.sunder.need_sword": "メインハンドに剣を構えよ。"
 }
