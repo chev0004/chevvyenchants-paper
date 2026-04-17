@@ -20,26 +20,34 @@ public final class Gills {
 	private Gills() {}
 
 	public static void register(JavaPlugin plugin) {
-		Bukkit.getScheduler().runTaskTimer(plugin, Gills::tickAllWorlds, 0L, 40L);
+		Bukkit.getScheduler().runTaskTimer(plugin, Gills::tickAllWorlds, 0L, 1L);
 	}
 
 	private static void tickAllWorlds() {
-		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.GILLS);
-		if (en == null) {
-			return;
-		}
-		for (World world : Bukkit.getWorlds()) {
+		for (var world : Bukkit.getWorlds()) {
 			for (Player player : world.getPlayers()) {
 				ItemStack helmet = player.getInventory().getHelmet();
-				if (helmet == null || helmet.getType().isAir()) {
-					continue;
+				if (isOnStack(helmet, world)) {
+					player.addPotionEffect(
+						new PotionEffect(
+							PotionEffectType.WATER_BREATHING,
+							PotionEffect.INFINITE_DURATION,
+							0,
+							false,
+							false,
+							false
+						)
+					);
+				} else {
+					PotionEffect existing = player.getPotionEffect(PotionEffectType.WATER_BREATHING);
+					if (existing != null
+						&& existing.getDuration() == PotionEffect.INFINITE_DURATION
+						&& existing.getAmplifier() == 0
+						&& !existing.isAmbient()
+						&& !existing.hasParticles()) {
+						player.removePotionEffect(PotionEffectType.WATER_BREATHING);
+					}
 				}
-				if (ChevvyItemUtil.getEnchantLevel(helmet, en) <= 0) {
-					continue;
-				}
-				player.addPotionEffect(new PotionEffect(
-					PotionEffectType.WATER_BREATHING, 300, 0, true, false, true
-				));
 			}
 		}
 	}
@@ -80,5 +88,13 @@ public final class Gills {
 		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.GILLS);
 		ChevvyItemUtil.removeEnchant(stack, en, NBT_KEY, LORE_KEY);
 		sender.sendMessage(Component.translatable("chevvyenchants.command.gills.cleared"));
+	}
+
+	private static boolean isOnStack(ItemStack stack, World world) {
+		if (stack == null || stack.getType().isAir()) {
+			return false;
+		}
+		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.GILLS);
+		return ChevvyItemUtil.hasEnchantOrLegacyNbt(stack, en, NBT_KEY);
 	}
 }
