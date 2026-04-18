@@ -59,7 +59,6 @@ final class ChevvyVillagerTrades {
 		new EnchantOffer(ChevvyEnchantKeys.WINDWALKER, 22),
 		new EnchantOffer(ChevvyEnchantKeys.LAST_STAND, 30),
 		new EnchantOffer(ChevvyEnchantKeys.PURIFY, 26),
-		new EnchantOffer(ChevvyEnchantKeys.FART, 40),
 		new EnchantOffer(ChevvyEnchantKeys.NIGHT_EYE, 20),
 		new EnchantOffer(ChevvyEnchantKeys.GILLS, 20),
 		new EnchantOffer(ChevvyEnchantKeys.DEFLECT, 30)
