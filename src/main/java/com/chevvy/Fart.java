@@ -42,6 +42,9 @@ public final class Fart {
 	private static final double KNOCKBACK_LIFT = 0.35;
 	private static final int POISON_DURATION_TICKS = 80;
 	private static final int POISON_AMPLIFIER = 0;
+	private static final int HUNGER_COST = 2;
+	private static final float SATURATION_COST = 2.0f;
+	private static final int MIN_HUNGER_TO_USE = 2;
 
 	private static final Particle.DustOptions FART_DUST =
 		new Particle.DustOptions(Color.fromRGB(154, 132, 46), 1.6f);
@@ -80,6 +83,9 @@ public final class Fart {
 			if (last != null && now - last < COOLDOWN_MILLIS) {
 				return;
 			}
+			if (player.getGameMode() != org.bukkit.GameMode.CREATIVE && player.getFoodLevel() < MIN_HUNGER_TO_USE) {
+				return;
+			}
 			COOLDOWNS.put(player.getUniqueId(), now);
 			unleashFart(player, legs);
 		}
@@ -94,6 +100,11 @@ public final class Fart {
 		}
 		Vector backward = facing.clone().multiply(-1);
 		Location burstOrigin = origin.clone().add(0, 1.0, 0).add(backward.clone().multiply(0.6));
+
+		if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
+			player.setFoodLevel(Math.max(0, player.getFoodLevel() - HUNGER_COST));
+			player.setSaturation(Math.max(0f, player.getSaturation() - SATURATION_COST));
+		}
 
 		world.spawnParticle(Particle.GUST_EMITTER_LARGE, burstOrigin, 1, 0, 0, 0, 0);
 		world.spawnParticle(Particle.GUST, burstOrigin, 24, 0.9, 0.6, 0.9, 0.1);
