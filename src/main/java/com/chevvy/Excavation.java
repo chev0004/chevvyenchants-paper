@@ -55,20 +55,20 @@ public final class Excavation {
 			Vector look = player.getEyeLocation().getDirection();
 			ItemStack toolSnapshot = tool.clone();
 			org.bukkit.Location loc = block.getLocation();
+			Material centerType = block.getType();
 			Bukkit.getScheduler().runTask(plugin, () -> {
 				if (!player.isOnline()) {
 					return;
 				}
 				Block center = loc.getBlock();
 				List<Block> extra = ChevvyMiningPlane.offsetsForPlane(center, look);
-				Tag<Material> tag = Bukkit.getTag(Tag.REGISTRY_BLOCKS, NamespacedKey.minecraft("mineable/pickaxe"), Material.class);
 				ChevvyMiningPlane.setChainedBreak(true);
 				try {
 					for (Block target : extra) {
 						if (target.getX() == center.getX() && target.getY() == center.getY() && target.getZ() == center.getZ()) {
 							continue;
 						}
-						if (target.getType().isAir() || tag == null || !tag.isTagged(target.getType())) {
+						if (target.getType() != centerType) {
 							continue;
 						}
 						target.breakNaturally(toolSnapshot);
