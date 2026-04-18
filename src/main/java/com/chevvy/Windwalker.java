@@ -1,21 +1,28 @@
 package com.chevvy;
 
 import org.bukkit.Bukkit;
+import org.bukkit.NamespacedKey;
 import org.bukkit.Tag;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.command.CommandSender;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.EquipmentSlotGroup;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 
 public final class Windwalker {
 	public static final String NBT_KEY = "chevvyenchants_windwalker";
 	public static final String LORE_KEY = "enchantment.chevvyenchants.windwalker";
+
+	private static final NamespacedKey SPEED_MODIFIER_KEY =
+		new NamespacedKey("chevvyenchants", "windwalker_speed");
+	private static final double SPEED_PER_LEVEL = 0.20;
 
 	private Windwalker() {}
 
@@ -27,46 +34,52 @@ public final class Windwalker {
 		for (var world : Bukkit.getWorlds()) {
 			for (Player player : world.getPlayers()) {
 				ItemStack boots = player.getInventory().getBoots();
+				int level = 0;
 				if (isOnStack(boots, world)) {
 					Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
-					if (en == null) {
-						continue;
-					}
-					int level = ChevvyItemUtil.getEnchantLevel(boots, en);
-					if (level <= 0) {
-						level = 1;
-					}
-					int amp = Math.max(0, level - 1);
-					player.addPotionEffect(
-						new PotionEffect(
-							PotionEffectType.SPEED,
-							PotionEffect.INFINITE_DURATION,
-							amp,
-							false,
-							false,
-							false
-						)
-					);
-				} else {
-					PotionEffect existing = player.getPotionEffect(PotionEffectType.SPEED);
-					if (existing != null && isOurSpeed(existing)) {
-						player.removePotionEffect(PotionEffectType.SPEED);
+					if (en != null) {
+						level = ChevvyItemUtil.getEnchantLevel(boots, en);
+						if (level <= 0) {
+							level = 1;
+						}
 					}
 				}
+				applySpeedModifier(player, level);
 			}
 		}
 	}
 
-	private static boolean isOurSpeed(PotionEffect existing) {
-		if (existing.getDuration() != PotionEffect.INFINITE_DURATION
-			|| existing.isAmbient()
-			|| existing.hasParticles()) {
-			return false;
+	private static void applySpeedModifier(Player player, int level) {
+		AttributeInstance attr = player.getAttribute(Attribute.MOVEMENT_SPEED);
+		if (attr == null) {
+			return;
 		}
-		Enchantment en = Enchantment.getByKey(ChevvyEnchantKeys.WINDWALKER);
-		int maxAmp = en != null ? Math.max(0, en.getMaxLevel() - 1) : 2;
-		int amp = existing.getAmplifier();
-		return amp >= 0 && amp <= maxAmp;
+		AttributeModifier existing = null;
+		for (AttributeModifier mod : attr.getModifiers()) {
+			if (SPEED_MODIFIER_KEY.equals(mod.getKey())) {
+				existing = mod;
+				break;
+			}
+		}
+		if (level <= 0) {
+			if (existing != null) {
+				attr.removeModifier(existing);
+			}
+			return;
+		}
+		double desired = SPEED_PER_LEVEL * level;
+		if (existing != null) {
+			if (Math.abs(existing.getAmount() - desired) < 1.0E-6) {
+				return;
+			}
+			attr.removeModifier(existing);
+		}
+		attr.addModifier(new AttributeModifier(
+			SPEED_MODIFIER_KEY,
+			desired,
+			AttributeModifier.Operation.ADD_SCALAR,
+			EquipmentSlotGroup.ANY
+		));
 	}
 
 	public static void applyEnchantToStack(ItemStack stack, World world) {
