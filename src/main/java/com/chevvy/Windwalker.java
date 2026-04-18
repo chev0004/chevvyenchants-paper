@@ -22,7 +22,7 @@ public final class Windwalker {
 
 	private static final NamespacedKey SPEED_MODIFIER_KEY =
 		new NamespacedKey("chevvyenchants", "windwalker_speed");
-	private static final double SPEED_PER_LEVEL = 0.20;
+	private static final double SPEED_PER_LEVEL = 0.14;
 
 	private Windwalker() {}
 
