@@ -113,8 +113,11 @@ public final class Fart {
 		world.spawnParticle(Particle.CLOUD, burstOrigin, 18, 0.8, 0.4, 0.8, 0.05);
 		world.spawnParticle(Particle.SNEEZE, burstOrigin, 12, 0.6, 0.4, 0.6, 0.02);
 
-		world.playSound(origin, Sound.ENTITY_WIND_CHARGE_THROW, SoundCategory.PLAYERS, 1.2f, 0.7f);
+		world.playSound(origin, Sound.BLOCK_DRIED_GHAST_STEP, SoundCategory.PLAYERS, 1.6f, 0.7f);
 		world.playSound(origin, Sound.ENTITY_HORSE_BREATHE, SoundCategory.PLAYERS, 1.4f, 0.6f);
+		world.playSound(origin, Sound.ENTITY_SLIME_SQUISH, SoundCategory.PLAYERS, 1.3f, 0.5f);
+		world.playSound(origin, Sound.ENTITY_PUFFER_FISH_BLOW_OUT, SoundCategory.PLAYERS, 1.2f, 0.6f);
+		world.playSound(origin, Sound.ENTITY_STRIDER_EAT, SoundCategory.PLAYERS, 1.1f, 0.5f);
 
 		for (Entity nearby : world.getNearbyEntities(origin, RADIUS, RADIUS, RADIUS)) {
 			if (!(nearby instanceof LivingEntity victim)) {
