@@ -37,7 +37,7 @@ public final class SonicShot {
 	private static final long COOLDOWN_MILLIS = 1500L;
 	private static final double BEAM_RANGE = 15.0;
 	private static final double BEAM_RADIUS = 1.25;
-	private static final double DAMAGE = 10.0;
+	private static final double DAMAGE = 5.0;
 	private static final double KNOCKBACK_STRENGTH = 0.8;
 	private static final double KNOCKBACK_LIFT = 0.4;
 	private static final int BEAM_STEPS = 16;
