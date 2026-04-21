@@ -43,6 +43,7 @@ public class ChevvyEnchants extends JavaPlugin {
 		Drain.register(this);
 		Sunder.register(this);
 		Deflect.register(this);
+		XpBottleFill.register(this);
 		LOGGER.info("ChevvyEnchants initialized");
 	}
 }
