@@ -18,31 +18,55 @@ public final class LastStand {
 	public static final String LORE_KEY = "enchantment.chevvyenchants.last_stand";
 
 	private static final double HP_THRESHOLD = 0.2;
-	private static final int EFFECT_DURATION = 100;
 
 	private LastStand() {}
 
 	public static void register(JavaPlugin plugin) {
-		Bukkit.getScheduler().runTaskTimer(plugin, LastStand::tickAllWorlds, 0L, 10L);
+		Bukkit.getScheduler().runTaskTimer(plugin, LastStand::tickAllWorlds, 0L, 1L);
 	}
 
 	private static void tickAllWorlds() {
 		for (World world : Bukkit.getWorlds()) {
 			for (Player player : world.getPlayers()) {
 				ItemStack chest = player.getInventory().getChestplate();
-				if (!isOnStack(chest, world)) {
-					continue;
+				if (isOnStack(chest, world)
+					&& player.getHealth() / player.getMaxHealth() <= HP_THRESHOLD) {
+					player.addPotionEffect(
+						new PotionEffect(
+							PotionEffectType.RESISTANCE,
+							PotionEffect.INFINITE_DURATION,
+							0,
+							false,
+							false,
+							false
+						)
+					);
+					player.addPotionEffect(
+						new PotionEffect(
+							PotionEffectType.STRENGTH,
+							PotionEffect.INFINITE_DURATION,
+							0,
+							false,
+							false,
+							false
+						)
+					);
+				} else {
+					removeIfOurs(player, PotionEffectType.RESISTANCE);
+					removeIfOurs(player, PotionEffectType.STRENGTH);
 				}
-				if (player.getHealth() / player.getMaxHealth() > HP_THRESHOLD) {
-					continue;
-				}
-				player.addPotionEffect(
-					new PotionEffect(PotionEffectType.RESISTANCE, EFFECT_DURATION, 0, false, true, true)
-				);
-				player.addPotionEffect(
-					new PotionEffect(PotionEffectType.STRENGTH, EFFECT_DURATION, 0, false, true, true)
-				);
 			}
+		}
+	}
+
+	private static void removeIfOurs(Player player, PotionEffectType type) {
+		PotionEffect existing = player.getPotionEffect(type);
+		if (existing != null
+			&& existing.getDuration() == PotionEffect.INFINITE_DURATION
+			&& existing.getAmplifier() == 0
+			&& !existing.isAmbient()
+			&& !existing.hasParticles()) {
+			player.removePotionEffect(type);
 		}
 	}
 
@@ -84,7 +108,7 @@ public final class LastStand {
 		sender.sendMessage(Component.translatable("chevvyenchants.command.last_stand.cleared"));
 	}
 
-	public static boolean isOnStack(ItemStack stack, World world) {
+	private static boolean isOnStack(ItemStack stack, World world) {
 		if (stack == null || stack.getType().isAir()) {
 			return false;
 		}
