@@ -158,5 +158,6 @@
   "chevvyenchants.deflect": "Deflect",
   "chevvyenchants.command.deflect.added": "Applied Deflect to the held armor.",
   "chevvyenchants.command.deflect.cleared": "Removed Deflect from the held item.",
-  "chevvyenchants.command.deflect.need_armor": "Hold armor in your main hand."
+  "chevvyenchants.command.deflect.need_armor": "Hold armor in your main hand.",
+  "chevvyenchants.xp_bottle_fill.not_enough_xp": "Not enough experience to fill a bottle (hold Shift and right-click; uses 3 to 11, like one bottle o' enchanting)."
 }

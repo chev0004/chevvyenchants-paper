@@ -158,5 +158,6 @@
   "chevvyenchants.deflect": "逸らし",
   "chevvyenchants.command.deflect.added": "手持ちの防具に【逸らし】のエンチャントを刻み込んだ。",
   "chevvyenchants.command.deflect.cleared": "手持ちのアイテムから【逸らし】の力を解き放った。",
-  "chevvyenchants.command.deflect.need_armor": "メインハンドに防具を構えよ。"
+  "chevvyenchants.command.deflect.need_armor": "メインハンドに防具を構えよ。",
+  "chevvyenchants.xp_bottle_fill.not_enough_xp": "経験値が足りないため瓶を満たせません。"
 }

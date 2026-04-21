@@ -13,5 +13,6 @@
   "chevvyenchants.command.ember_heart.added": "Applied Ember Heart to the held chestplate.",
   "chevvyenchants.command.ember_heart.cleared": "Removed Ember Heart from the held item.",
   "chevvyenchants.command.ember_heart.need_chestplate": "Hold a chestplate in your main hand.",
-  "chevvyenchants.command.ember_heart.players_only": "This command can only be used by a player."
+  "chevvyenchants.command.ember_heart.players_only": "This command can only be used by a player.",
+  "chevvyenchants.xp_bottle_fill.not_enough_xp": "Not enough experience to fill a bottle (hold Shift and right-click; uses 3 to 11, like one bottle o' enchanting)."
 }
